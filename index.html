@@ -256,6 +256,69 @@
   }
   .battle-txt small { display:block; font-size:11px; color:#4040a0; letter-spacing:2px; margin-top:3px; }
 
+  /* ═══════════════ POINTS TABLE ═══════════════ */
+  .points-section { padding: 0 28px; }
+  .pts-table-wrap {
+    background:linear-gradient(135deg,#0e0e1c,#13132a);
+    border:1px solid #1c1c38;
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .pts-table { width:100%; border-collapse:collapse; }
+  .pts-table thead th {
+    font-family:'Oswald',sans-serif;
+    font-size:10px; font-weight:600;
+    color:#7050a0; letter-spacing:1.5px; text-transform:uppercase;
+    text-align:center; padding:12px 6px;
+    background:rgba(255,255,255,0.025);
+    border-bottom:1px solid #1c1c38;
+  }
+  .pts-table thead th.team-col { text-align:left; padding-left:16px; }
+  .pts-table tbody td {
+    font-size:13px; color:#b0a8c8; text-align:center;
+    padding:14px 6px;
+    border-bottom:1px solid rgba(255,255,255,0.035);
+  }
+  .pts-table tbody tr:last-child td { border-bottom:none; }
+  .pts-table tbody tr:hover td { background:rgba(255,255,255,0.02); }
+
+  .pts-pos {
+    font-family:'Oswald',sans-serif; font-weight:700;
+    font-size:14px; width:42px;
+  }
+  .pts-team-cell {
+    display:flex; align-items:center; gap:9px;
+    text-align:left; padding-left:16px !important;
+  }
+  .pts-team-cell .pip { width:3px; height:24px; border-radius:2px; flex-shrink:0; }
+  .pts-team-cell .emj { font-size:18px; line-height:1; }
+  .pts-team-cell .nm {
+    font-family:'Oswald',sans-serif; font-weight:600;
+    font-size:13px; letter-spacing:0.5px; text-transform:uppercase;
+  }
+  .pts-val { font-weight:700; color:#e8e0f8; font-family:'Oswald',sans-serif; font-size:15px; }
+  .pts-nrr.pos { color:#80e880; }
+  .pts-nrr.neg { color:#e88080; }
+
+  /* qualify accent — left border per row by team */
+  .pts-row-golden  td:first-child { box-shadow:inset 3px 0 0 #f0c040; }
+  .pts-row-blazing td:first-child { box-shadow:inset 3px 0 0 #ff6622; }
+  .pts-row-thunder td:first-child { box-shadow:inset 3px 0 0 #22aaff; }
+  .pts-row-sixers  td:first-child { box-shadow:inset 3px 0 0 #00e060; }
+
+  .pts-row-golden  .nm { color:#f0c040; }
+  .pts-row-blazing .nm { color:#ff6622; }
+  .pts-row-thunder .nm { color:#22aaff; }
+  .pts-row-sixers  .nm { color:#00e060; }
+
+  .qual-tag {
+    font-size:9px; font-weight:600; letter-spacing:0.5px;
+    padding:2px 7px; border-radius:10px; margin-left:6px;
+    background:rgba(0,224,96,0.12); color:#00e060;
+    border:1px solid rgba(0,224,96,0.28);
+  }
+  .qual-tag.out { background:rgba(255,255,255,0.04); color:#5a5a7a; border-color:rgba(255,255,255,0.08); }
+
   /* ═══════════════ RESPONSIVE ═══════════════ */
 
   /* ≤ 768px — tablet */
@@ -298,6 +361,13 @@
     .teams-grid { grid-template-columns:1fr; margin:0 12px; }
     .schedule-section { padding:0 12px 18px; }
 
+    .pts-table thead th { font-size:9px; padding:10px 3px; letter-spacing:1px; }
+    .pts-table tbody td { font-size:12px; padding:12px 3px; }
+    .pts-team-cell { gap:6px; padding-left:10px !important; }
+    .pts-team-cell .nm { font-size:11px; }
+    .pts-team-cell .emj { font-size:15px; }
+    .qual-tag { display:none; }
+
     .section-label { gap:10px; padding:22px 0 12px; }
     .section-label .badge { font-size:9px; letter-spacing:2px; padding:4px 11px; }
     .section-label .note { font-size:9px; }
@@ -305,15 +375,15 @@
     .team-name { font-size:16px; }
     .team-emoji { font-size:24px; }
 
-    /* Stack each match side vertically */
-    .match-row { flex-wrap:wrap; padding:12px 14px; gap:8px; }
-    .match-num-lbl { width:auto; }
-    .team-side { flex:1 1 100%; }
-    .team-side.right { justify-content:flex-start; }
-    .vs-pill { order:0; margin:2px 0; }
-    .color-pip { height:22px; }
-    .t-name { font-size:12px; }
-    .match-badge { margin-left:auto; }
+    /* Keep match on one line, just shrink */
+    .match-row { padding:11px 12px; gap:6px; }
+    .match-num-lbl { width:20px; font-size:9px; }
+    .team-side { gap:5px; min-width:0; }
+    .t-emoji { font-size:14px; }
+    .t-name { font-size:11px; }
+    .vs-pill { font-size:9px; padding:3px 7px; }
+    .color-pip { height:24px; }
+    .match-badge { display:none; }
 
     .day-hdr { padding:9px 14px; }
 
@@ -360,9 +430,18 @@
     .section-label .badge { font-size:8px; padding:3px 9px; letter-spacing:1px; }
     .section-label .note { display:none; }
 
-    .match-row { padding:10px 12px; }
-    .t-name { font-size:10.5px; }
+    .match-row { padding:10px 10px; gap:5px; }
+    .t-name { font-size:10px; line-height:1.2; }
+    .t-emoji { font-size:13px; }
+    .color-pip { height:22px; }
     .day-lbl { font-size:10px; }
+
+    /* hide L & T cols on tiniest screens to keep table readable */
+    .pts-table th:nth-child(5), .pts-table td:nth-child(5),
+    .pts-table th:nth-child(6), .pts-table td:nth-child(6) { display:none; }
+    .pts-team-cell .nm { font-size:10px; letter-spacing:0; }
+    .pts-table tbody td { font-size:11px; padding:11px 2px; }
+    .pts-val { font-size:13px; }
 
     .bottom-strip { padding:16px 12px; }
     .battle-txt { font-size:12px; letter-spacing:1px; }
@@ -702,6 +781,60 @@
         </div>
         <span class="match-badge mb-b">M 12</span>
       </div>
+    </div>
+
+    <!-- ══ POINTS TABLE ══ -->
+    <div class="section-label" style="padding-top:28px;">
+      <span class="badge badge-teams">Points Table</span>
+      <span class="line"></span>
+      <span class="note">TOP 3 QUALIFY · LIVE STANDINGS</span>
+    </div>
+
+    <div class="pts-table-wrap">
+      <table class="pts-table">
+        <thead>
+          <tr>
+            <th class="pts-pos">#</th>
+            <th class="team-col">Team</th>
+            <th>P</th>
+            <th>W</th>
+            <th>L</th>
+            <th>T</th>
+            <th>NRR</th>
+            <th>Pts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="pts-row-golden">
+            <td class="pts-pos">1</td>
+            <td><div class="pts-team-cell"><div class="pip" style="background:#f0c040;"></div><span class="emj">🛡️</span><span class="nm">Golden Warriors</span></div></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="pts-nrr">—</td>
+            <td class="pts-val">0</td>
+          </tr>
+          <tr class="pts-row-blazing">
+            <td class="pts-pos">2</td>
+            <td><div class="pts-team-cell"><div class="pip" style="background:#ff6622;"></div><span class="emj">🔥</span><span class="nm">Blazing Tigers</span></div></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="pts-nrr">—</td>
+            <td class="pts-val">0</td>
+          </tr>
+          <tr class="pts-row-thunder">
+            <td class="pts-pos">3</td>
+            <td><div class="pts-team-cell"><div class="pip" style="background:#22aaff;"></div><span class="emj">⚡</span><span class="nm">Thunder Strikers</span></div></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="pts-nrr">—</td>
+            <td class="pts-val">0</td>
+          </tr>
+          <tr class="pts-row-sixers">
+            <td class="pts-pos">4</td>
+            <td><div class="pts-team-cell"><div class="pip" style="background:#00e060;"></div><span class="emj">🏏</span><span class="nm">The Sixers</span></div></td>
+            <td>0</td><td>0</td><td>0</td><td>0</td>
+            <td class="pts-nrr">—</td>
+            <td class="pts-val">0</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <!-- ══ SEMI FINALS ══ -->
