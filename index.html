@@ -255,6 +255,118 @@
     letter-spacing:3px; text-transform:uppercase; text-align:center;
   }
   .battle-txt small { display:block; font-size:11px; color:#4040a0; letter-spacing:2px; margin-top:3px; }
+
+  /* ═══════════════ RESPONSIVE ═══════════════ */
+
+  /* ≤ 768px — tablet */
+  @media (max-width: 768px) {
+    body { padding: 24px 14px; }
+    .poster { border-radius:18px; }
+
+    .header { padding: 40px 24px 34px; }
+    .header-trophy { font-size:48px; }
+    .header h1 { font-size:38px; letter-spacing:3px; }
+    .header-sub { font-size:11px; letter-spacing:4px; }
+    .header-stats { flex-wrap:wrap; gap:20px 28px; }
+    .hstat-sep { display:none; }
+    .hstat .val { font-size:22px; }
+
+    .section-wrap { padding:0 18px; }
+    .teams-grid { margin:0 18px; }
+    .schedule-section { padding:0 18px 22px; }
+
+    .team-card { padding:20px 18px; }
+
+    .bottom-strip { padding:18px 20px; gap:12px; }
+    .battle-txt { font-size:14px; letter-spacing:2px; }
+    .bstat .val { font-size:20px; }
+  }
+
+  /* ≤ 560px — large phone: single-column teams, stacked match rows */
+  @media (max-width: 560px) {
+    body { padding: 18px 10px; }
+
+    .header { padding: 32px 18px 28px; }
+    .header-trophy { font-size:42px; }
+    .header h1 { font-size:30px; letter-spacing:2px; }
+    .header-sub { font-size:10px; letter-spacing:3px; }
+    .header-stats { gap:16px 22px; }
+    .hstat .val { font-size:20px; }
+    .hstat .lbl { font-size:9px; }
+
+    .section-wrap { padding:0 12px; }
+    .teams-grid { grid-template-columns:1fr; margin:0 12px; }
+    .schedule-section { padding:0 12px 18px; }
+
+    .section-label { gap:10px; padding:22px 0 12px; }
+    .section-label .badge { font-size:9px; letter-spacing:2px; padding:4px 11px; }
+    .section-label .note { font-size:9px; }
+
+    .team-name { font-size:16px; }
+    .team-emoji { font-size:24px; }
+
+    /* Stack each match side vertically */
+    .match-row { flex-wrap:wrap; padding:12px 14px; gap:8px; }
+    .match-num-lbl { width:auto; }
+    .team-side { flex:1 1 100%; }
+    .team-side.right { justify-content:flex-start; }
+    .vs-pill { order:0; margin:2px 0; }
+    .color-pip { height:22px; }
+    .t-name { font-size:12px; }
+    .match-badge { margin-left:auto; }
+
+    .day-hdr { padding:9px 14px; }
+
+    .bottom-strip { flex-direction:column; text-align:center; padding:18px; }
+  }
+
+  /* ≤ 380px — small phone */
+  @media (max-width: 380px) {
+    .header h1 { font-size:26px; letter-spacing:1px; }
+    .header-trophy { font-size:38px; }
+    .header-stats { gap:14px 18px; }
+    .hstat .val { font-size:18px; }
+
+    .team-name { font-size:15px; letter-spacing:1px; }
+    .player-item { font-size:12px; }
+
+    .t-name { font-size:11px; }
+    .vs-pill { font-size:10px; padding:3px 9px; }
+  }
+
+  /* ≤ 320px — smallest target */
+  @media (max-width: 320px) {
+    body { padding: 14px 8px; }
+
+    .header { padding: 26px 14px 24px; }
+    .header h1 { font-size:23px; }
+    .header-trophy { font-size:34px; }
+    .header-divider { width:120px; }
+    .header-stats { gap:12px 14px; }
+    .hstat .val { font-size:17px; }
+    .hstat .lbl { font-size:8px; letter-spacing:1px; }
+
+    .section-wrap { padding:0 8px; }
+    .teams-grid { margin:0 8px; }
+    .schedule-section { padding:0 8px 14px; }
+
+    .team-card { padding:16px 14px; }
+    .team-name { font-size:14px; }
+    .team-emoji { font-size:22px; }
+    .player-item { font-size:11px; gap:6px; }
+    .player-captain { font-size:12px; }
+    .captain-badge { font-size:9px; padding:2px 6px; }
+
+    .section-label .badge { font-size:8px; padding:3px 9px; letter-spacing:1px; }
+    .section-label .note { display:none; }
+
+    .match-row { padding:10px 12px; }
+    .t-name { font-size:10.5px; }
+    .day-lbl { font-size:10px; }
+
+    .bottom-strip { padding:16px 12px; }
+    .battle-txt { font-size:12px; letter-spacing:1px; }
+  }
 </style>
 </head>
 <body>
