@@ -117,7 +117,7 @@
   .team-golden::after  { color:#f0c040; }
   .team-blazing { background:linear-gradient(135deg,#180500,#260c00); border-top:3px solid #ff5500; }
   .team-blazing::after { color:#ff5500; }
-  .team-thunder { background:linear-gradient(135deg,#00091a,#001428); border-top:3px solid #00aaff; }
+  .team-thunder { background:linear-gradient(135deg,#00091a,#001428); border-top:3px solid #00aaff; }z
   .team-thunder::after { color:#00aaff; }
   .team-sixers  { background:linear-gradient(135deg,#001506,#002010); border-top:3px solid #00e060; }
   .team-sixers::after  { color:#00e060; }
@@ -670,9 +670,10 @@
         <span class="day-lbl">Day 2</span>
         <span class="day-note">2 matches</span>
       </div>
-      <div class="match-row">
+      <div class="match-row is-done">
         <span class="match-num-lbl">M3</span>
         <div class="team-side right">
+          <span class="result-flag loss">LOSS</span>
           <span class="t-name">Golden Warriors</span>
           <span class="t-emoji">🛡️</span>
           <div class="color-pip" style="background:#f0c040;"></div>
@@ -682,6 +683,7 @@
           <div class="color-pip" style="background:#22aaff;"></div>
           <span class="t-emoji">⚡</span>
           <span class="t-name">Thunder Strikers</span>
+          <span class="result-flag win">WIN</span>
         </div>
         <span class="match-badge mb-a">M 3</span>
       </div>
@@ -701,9 +703,10 @@
           </tbody>
         </table>
       </div>
-      <div class="match-row">
+      <div class="match-row is-done">
         <span class="match-num-lbl">M4</span>
         <div class="team-side right">
+          <span class="result-flag win">WIN</span>
           <span class="t-name">Blazing Tigers</span>
           <span class="t-emoji">🔥</span>
           <div class="color-pip" style="background:#ff6622;"></div>
@@ -713,6 +716,7 @@
           <div class="color-pip" style="background:#00e060;"></div>
           <span class="t-emoji">🏏</span>
           <span class="t-name">The Sixers</span>
+          <span class="result-flag loss">LOSS</span>
         </div>
         <span class="match-badge mb-b">M 4</span>
       </div>
@@ -1036,32 +1040,32 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="pts-row-blazing">
-            <td class="pts-pos">1</td>
-            <td><div class="pts-team-cell"><div class="pip" style="background:#ff6622;"></div><span class="emj">🔥</span><span class="nm">Blazing Tigers</span></div></td>
-            <td>1</td><td>1</td><td>0</td><td>0</td>
-            <td class="pts-nrr">+5.00</td>
-            <td class="pts-val">2</td>
-          </tr>
           <tr class="pts-row-thunder">
-            <td class="pts-pos">2</td>
+            <td class="pts-pos">1</td>
             <td><div class="pts-team-cell"><div class="pip" style="background:#22aaff;"></div><span class="emj">⚡</span><span class="nm">Thunder Strikers</span></div></td>
-            <td>1</td><td>1</td><td>0</td><td>0</td>
-            <td class="pts-nrr">+1.00</td>
-            <td class="pts-val">2</td>
+            <td>2</td><td>2</td><td>0</td><td>0</td>
+            <td class="pts-nrr pos">+10</td>
+            <td class="pts-val">4</td>
+          </tr>
+          <tr class="pts-row-blazing">
+            <td class="pts-pos">2</td>
+            <td><div class="pts-team-cell"><div class="pip" style="background:#ff6622;"></div><span class="emj">🔥</span><span class="nm">Blazing Tigers</span></div></td>
+            <td>2</td><td>2</td><td>0</td><td>0</td>
+            <td class="pts-nrr pos">+7</td>
+            <td class="pts-val">4</td>
           </tr>
           <tr class="pts-row-sixers">
             <td class="pts-pos">3</td>
             <td><div class="pts-team-cell"><div class="pip" style="background:#00e060;"></div><span class="emj">🏏</span><span class="nm">The Sixers</span></div></td>
-            <td>1</td><td>0</td><td>1</td><td>0</td>
-            <td class="pts-nrr">-1.00</td>
+            <td>2</td><td>0</td><td>2</td><td>0</td>
+            <td class="pts-nrr neg">-3</td>
             <td class="pts-val">0</td>
           </tr>
           <tr class="pts-row-golden">
             <td class="pts-pos">4</td>
             <td><div class="pts-team-cell"><div class="pip" style="background:#f0c040;"></div><span class="emj">🛡️</span><span class="nm">Golden Warriors</span></div></td>
-            <td>1</td><td>0</td><td>1</td><td>0</td>
-            <td class="pts-nrr">-5.00</td>
+            <td>2</td><td>0</td><td>2</td><td>0</td>
+            <td class="pts-nrr neg">-14</td>
             <td class="pts-val">0</td>
           </tr>
         </tbody>
