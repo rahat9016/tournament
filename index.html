@@ -226,6 +226,41 @@
   .mb-a { background:rgba(140,80,255,0.12); color:#9060e0; border:1px solid rgba(140,80,255,0.25); }
   .mb-b { background:rgba(60,100,255,0.12);  color:#6080e0; border:1px solid rgba(60,100,255,0.25); }
 
+  .result-flag {
+    font-family:'Oswald',sans-serif;
+    font-size:8px; font-weight:700;
+    padding:2px 6px; border-radius:8px;
+    letter-spacing:0.5px; flex-shrink:0;
+  }
+  .result-flag.win  { background:rgba(0,224,96,0.14);  color:#3ad17a; border:1px solid rgba(0,224,96,0.35); }
+  .result-flag.loss { background:rgba(255,60,60,0.12); color:#ff6b6b; border:1px solid rgba(255,60,60,0.3); }
+  .match-row.is-done { background:rgba(255,255,255,0.015); }
+
+  .match-roster {
+    padding:0 18px 14px 46px;
+    border-bottom:1px solid rgba(255,255,255,0.035);
+  }
+  .roster-table {
+    width:100%; border-collapse:collapse;
+    background:rgba(255,255,255,0.015);
+    border:1px solid rgba(255,255,255,0.05); border-radius:8px; overflow:hidden;
+  }
+  .roster-table th {
+    font-family:'Oswald',sans-serif;
+    font-size:10px; font-weight:700; letter-spacing:0.5px;
+    text-align:left; padding:7px 12px;
+    background:rgba(255,255,255,0.03);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .roster-table td {
+    font-size:11px; color:#b0b0d0; padding:5px 12px;
+    border-bottom:1px solid rgba(255,255,255,0.03);
+    width:50%; vertical-align:top;
+  }
+  .roster-table td + td { border-left:1px solid rgba(255,255,255,0.04); }
+  .roster-table tr:last-child td { border-bottom:none; }
+  .roster-table .cap { color:#fff; font-weight:600; }
+
   /* Semi / Final special */
   .match-row.is-semi { background:rgba(255,160,0,0.03); }
   .match-row.is-final { background:rgba(240,192,64,0.04); padding:16px 18px; }
@@ -561,9 +596,10 @@
         <span class="day-lbl">Day 1</span>
         <span class="day-note">2 matches</span>
       </div>
-      <div class="match-row">
+      <div class="match-row is-done">
         <span class="match-num-lbl">M1</span>
         <div class="team-side right">
+          <span class="result-flag loss">LOSS</span>
           <span class="t-name">Golden Warriors</span>
           <span class="t-emoji">🛡️</span>
           <div class="color-pip" style="background:#f0c040;"></div>
@@ -573,12 +609,30 @@
           <div class="color-pip" style="background:#ff6622;"></div>
           <span class="t-emoji">🔥</span>
           <span class="t-name">Blazing Tigers</span>
+          <span class="result-flag win">WIN</span>
         </div>
         <span class="match-badge mb-a">M 1</span>
       </div>
-      <div class="match-row">
+      <div class="match-roster">
+        <table class="roster-table">
+          <thead><tr>
+            <th style="color:#f0c040;">🛡️ Golden Warriors</th>
+            <th style="color:#ff6622;">🔥 Blazing Tigers</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="cap">👑 Shuvo</td><td class="cap">👑 Mahfuz Rahman Mishu</td></tr>
+            <tr><td>Dedar</td><td>Md Nayeem</td></tr>
+            <tr><td>Mofidul</td><td>Tanzim</td></tr>
+            <tr><td>Tushar</td><td>Saad</td></tr>
+            <tr><td>Minhazur Rahman</td><td>Rouf</td></tr>
+            <tr><td>Akhlaq</td><td>Fahim</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="match-row is-done">
         <span class="match-num-lbl">M2</span>
         <div class="team-side right">
+          <span class="result-flag win">WIN</span>
           <span class="t-name">Thunder Strikers</span>
           <span class="t-emoji">⚡</span>
           <div class="color-pip" style="background:#22aaff;"></div>
@@ -588,8 +642,25 @@
           <div class="color-pip" style="background:#00e060;"></div>
           <span class="t-emoji">🏏</span>
           <span class="t-name">The Sixers</span>
+          <span class="result-flag loss">LOSS</span>
         </div>
         <span class="match-badge mb-b">M 2</span>
+      </div>
+      <div class="match-roster">
+        <table class="roster-table">
+          <thead><tr>
+            <th style="color:#22aaff;">⚡ Thunder Strikers</th>
+            <th style="color:#00e060;">🏏 The Sixers</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="cap">👑 Mahafuz Islam</td><td class="cap">👑 Meraj</td></tr>
+            <tr><td>Rafiq Rabbi</td><td>Asif Reza</td></tr>
+            <tr><td>Latif</td><td>Shobuz</td></tr>
+            <tr><td>Shohag</td><td>Khalid</td></tr>
+            <tr><td>Maruf</td><td>Shiraj</td></tr>
+            <tr><td>Sakib (Java)</td><td>Montasir</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -614,6 +685,22 @@
         </div>
         <span class="match-badge mb-a">M 3</span>
       </div>
+      <div class="match-roster">
+        <table class="roster-table">
+          <thead><tr>
+            <th style="color:#f0c040;">🛡️ Golden Warriors</th>
+            <th style="color:#22aaff;">⚡ Thunder Strikers</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="cap">👑 Shuvo</td><td class="cap">👑 Mahafuz Islam</td></tr>
+            <tr><td>Dedar</td><td>Rafiq Rabbi</td></tr>
+            <tr><td>Mofidul</td><td>Latif</td></tr>
+            <tr><td>Tushar</td><td>Shohag</td></tr>
+            <tr><td>Minhazur Rahman</td><td>Maruf</td></tr>
+            <tr><td>Akhlaq</td><td>Sakib (Java)</td></tr>
+          </tbody>
+        </table>
+      </div>
       <div class="match-row">
         <span class="match-num-lbl">M4</span>
         <div class="team-side right">
@@ -628,6 +715,22 @@
           <span class="t-name">The Sixers</span>
         </div>
         <span class="match-badge mb-b">M 4</span>
+      </div>
+      <div class="match-roster">
+        <table class="roster-table">
+          <thead><tr>
+            <th style="color:#ff6622;">🔥 Blazing Tigers</th>
+            <th style="color:#00e060;">🏏 The Sixers</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="cap">👑 Mahfuz Rahman Mishu</td><td class="cap">👑 Meraj</td></tr>
+            <tr><td>Md Nayeem</td><td>Asif Reza</td></tr>
+            <tr><td>Tanzim</td><td>Shobuz</td></tr>
+            <tr><td>Saad</td><td>Khalid</td></tr>
+            <tr><td>Rouf</td><td>Shiraj</td></tr>
+            <tr><td>Fahim</td><td>Montasir</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -652,6 +755,22 @@
         </div>
         <span class="match-badge mb-a">M 5</span>
       </div>
+      <div class="match-roster">
+        <table class="roster-table">
+          <thead><tr>
+            <th style="color:#f0c040;">🛡️ Golden Warriors</th>
+            <th style="color:#00e060;">🏏 The Sixers</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="cap">👑 Shuvo</td><td class="cap">👑 Meraj</td></tr>
+            <tr><td>Dedar</td><td>Asif Reza</td></tr>
+            <tr><td>Mofidul</td><td>Shobuz</td></tr>
+            <tr><td>Tushar</td><td>Khalid</td></tr>
+            <tr><td>Minhazur Rahman</td><td>Shiraj</td></tr>
+            <tr><td>Akhlaq</td><td>Montasir</td></tr>
+          </tbody>
+        </table>
+      </div>
       <div class="match-row">
         <span class="match-num-lbl">M6</span>
         <div class="team-side right">
@@ -666,6 +785,22 @@
           <span class="t-name">Thunder Strikers</span>
         </div>
         <span class="match-badge mb-b">M 6</span>
+      </div>
+      <div class="match-roster">
+        <table class="roster-table">
+          <thead><tr>
+            <th style="color:#ff6622;">🔥 Blazing Tigers</th>
+            <th style="color:#22aaff;">⚡ Thunder Strikers</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="cap">👑 Mahfuz Rahman Mishu</td><td class="cap">👑 Mahafuz Islam</td></tr>
+            <tr><td>Md Nayeem</td><td>Rafiq Rabbi</td></tr>
+            <tr><td>Tanzim</td><td>Latif</td></tr>
+            <tr><td>Saad</td><td>Shohag</td></tr>
+            <tr><td>Rouf</td><td>Maruf</td></tr>
+            <tr><td>Fahim</td><td>Sakib (Java)</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -690,6 +825,22 @@
         </div>
         <span class="match-badge mb-a">M 7</span>
       </div>
+      <div class="match-roster">
+        <table class="roster-table">
+          <thead><tr>
+            <th style="color:#ff6622;">🔥 Blazing Tigers</th>
+            <th style="color:#f0c040;">🛡️ Golden Warriors</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="cap">👑 Mahfuz Rahman Mishu</td><td class="cap">👑 Shuvo</td></tr>
+            <tr><td>Md Nayeem</td><td>Dedar</td></tr>
+            <tr><td>Tanzim</td><td>Mofidul</td></tr>
+            <tr><td>Saad</td><td>Tushar</td></tr>
+            <tr><td>Rouf</td><td>Minhazur Rahman</td></tr>
+            <tr><td>Fahim</td><td>Akhlaq</td></tr>
+          </tbody>
+        </table>
+      </div>
       <div class="match-row">
         <span class="match-num-lbl">M8</span>
         <div class="team-side right">
@@ -704,6 +855,22 @@
           <span class="t-name">Thunder Strikers</span>
         </div>
         <span class="match-badge mb-b">M 8</span>
+      </div>
+      <div class="match-roster">
+        <table class="roster-table">
+          <thead><tr>
+            <th style="color:#00e060;">🏏 The Sixers</th>
+            <th style="color:#22aaff;">⚡ Thunder Strikers</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="cap">👑 Meraj</td><td class="cap">👑 Mahafuz Islam</td></tr>
+            <tr><td>Asif Reza</td><td>Rafiq Rabbi</td></tr>
+            <tr><td>Shobuz</td><td>Latif</td></tr>
+            <tr><td>Khalid</td><td>Shohag</td></tr>
+            <tr><td>Shiraj</td><td>Maruf</td></tr>
+            <tr><td>Montasir</td><td>Sakib (Java)</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -728,6 +895,22 @@
         </div>
         <span class="match-badge mb-a">M 9</span>
       </div>
+      <div class="match-roster">
+        <table class="roster-table">
+          <thead><tr>
+            <th style="color:#22aaff;">⚡ Thunder Strikers</th>
+            <th style="color:#f0c040;">🛡️ Golden Warriors</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="cap">👑 Mahafuz Islam</td><td class="cap">👑 Shuvo</td></tr>
+            <tr><td>Rafiq Rabbi</td><td>Dedar</td></tr>
+            <tr><td>Latif</td><td>Mofidul</td></tr>
+            <tr><td>Shohag</td><td>Tushar</td></tr>
+            <tr><td>Maruf</td><td>Minhazur Rahman</td></tr>
+            <tr><td>Sakib (Java)</td><td>Akhlaq</td></tr>
+          </tbody>
+        </table>
+      </div>
       <div class="match-row">
         <span class="match-num-lbl">M10</span>
         <div class="team-side right">
@@ -742,6 +925,22 @@
           <span class="t-name">Blazing Tigers</span>
         </div>
         <span class="match-badge mb-b">M 10</span>
+      </div>
+      <div class="match-roster">
+        <table class="roster-table">
+          <thead><tr>
+            <th style="color:#00e060;">🏏 The Sixers</th>
+            <th style="color:#ff6622;">🔥 Blazing Tigers</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="cap">👑 Meraj</td><td class="cap">👑 Mahfuz Rahman Mishu</td></tr>
+            <tr><td>Asif Reza</td><td>Md Nayeem</td></tr>
+            <tr><td>Shobuz</td><td>Tanzim</td></tr>
+            <tr><td>Khalid</td><td>Saad</td></tr>
+            <tr><td>Shiraj</td><td>Rouf</td></tr>
+            <tr><td>Montasir</td><td>Fahim</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -766,6 +965,22 @@
         </div>
         <span class="match-badge mb-a">M 11</span>
       </div>
+      <div class="match-roster">
+        <table class="roster-table">
+          <thead><tr>
+            <th style="color:#00e060;">🏏 The Sixers</th>
+            <th style="color:#f0c040;">🛡️ Golden Warriors</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="cap">👑 Meraj</td><td class="cap">👑 Shuvo</td></tr>
+            <tr><td>Asif Reza</td><td>Dedar</td></tr>
+            <tr><td>Shobuz</td><td>Mofidul</td></tr>
+            <tr><td>Khalid</td><td>Tushar</td></tr>
+            <tr><td>Shiraj</td><td>Minhazur Rahman</td></tr>
+            <tr><td>Montasir</td><td>Akhlaq</td></tr>
+          </tbody>
+        </table>
+      </div>
       <div class="match-row">
         <span class="match-num-lbl">M12</span>
         <div class="team-side right">
@@ -780,6 +995,22 @@
           <span class="t-name">Blazing Tigers</span>
         </div>
         <span class="match-badge mb-b">M 12</span>
+      </div>
+      <div class="match-roster">
+        <table class="roster-table">
+          <thead><tr>
+            <th style="color:#22aaff;">⚡ Thunder Strikers</th>
+            <th style="color:#ff6622;">🔥 Blazing Tigers</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="cap">👑 Mahafuz Islam</td><td class="cap">👑 Mahfuz Rahman Mishu</td></tr>
+            <tr><td>Rafiq Rabbi</td><td>Md Nayeem</td></tr>
+            <tr><td>Latif</td><td>Tanzim</td></tr>
+            <tr><td>Shohag</td><td>Saad</td></tr>
+            <tr><td>Maruf</td><td>Rouf</td></tr>
+            <tr><td>Sakib (Java)</td><td>Fahim</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
