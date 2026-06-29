@@ -1,1264 +1,2412 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Cricket Tournament</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@300;400;500;600&display=swap');
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cricket Tournament</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@300;400;500;600&display=swap");
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  body {
-    background: #07070f;
-    font-family: 'Roboto', sans-serif;
-    color: #d0c8e8;
-    padding: 40px 20px;
-  }
+      body {
+        background: #07070f;
+        font-family: "Roboto", sans-serif;
+        color: #d0c8e8;
+        padding: 40px 20px;
+      }
 
-  .poster {
-    max-width: 960px;
-    margin: 0 auto;
-    background: linear-gradient(160deg, #0f0f1a 0%, #14142a 50%, #0f0f1a 100%);
-    border: 2px solid #2a2a4a;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 0 100px rgba(100,60,200,0.25), 0 0 300px rgba(50,20,100,0.15);
-  }
+      .poster {
+        max-width: 960px;
+        margin: 0 auto;
+        background: linear-gradient(
+          160deg,
+          #0f0f1a 0%,
+          #14142a 50%,
+          #0f0f1a 100%
+        );
+        border: 2px solid #2a2a4a;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow:
+          0 0 100px rgba(100, 60, 200, 0.25),
+          0 0 300px rgba(50, 20, 100, 0.15);
+      }
 
-  /* ═══════════════ HEADER ═══════════════ */
-  .header {
-    background: linear-gradient(135deg, #1a0a3a 0%, #2d1060 45%, #1a0a3a 100%);
-    padding: 52px 40px 44px;
-    text-align: center;
-    position: relative;
-    border-bottom: 2px solid #4a2080;
-  }
-  .header::before {
-    content:'';
-    position:absolute;
-    inset:0;
-    background: repeating-linear-gradient(45deg,transparent,transparent 22px,rgba(255,255,255,0.012) 22px,rgba(255,255,255,0.012) 44px);
-    pointer-events:none;
-  }
-  .header-trophy { font-size:58px; line-height:1; margin-bottom:12px; filter:drop-shadow(0 0 22px rgba(255,200,0,0.55)); }
-  .header h1 {
-    font-family:'Oswald',sans-serif;
-    font-size:50px; font-weight:700;
-    color:#fff; letter-spacing:5px; text-transform:uppercase;
-    text-shadow:0 0 32px rgba(180,100,255,0.75);
-  }
-  .header h1 span { color:#f0c040; }
-  .header-sub {
-    font-size:12px; color:#8070b0;
-    letter-spacing:6px; text-transform:uppercase; margin-top:8px;
-  }
-  .header-divider {
-    width:160px; height:3px;
-    background:linear-gradient(90deg,transparent,#f0c040,transparent);
-    margin:14px auto 0; border-radius:2px;
-  }
-  .header-stats {
-    display:flex; justify-content:center; gap:40px;
-    margin-top:22px;
-  }
-  .hstat { text-align:center; }
-  .hstat .val {
-    font-family:'Oswald',sans-serif;
-    font-size:26px; font-weight:700; color:#f0c040;
-  }
-  .hstat .lbl {
-    font-size:10px; color:#6050a0;
-    letter-spacing:2px; text-transform:uppercase; margin-top:2px;
-  }
-  .hstat-sep { width:1px; background:rgba(255,255,255,0.08); margin:4px 0; }
+      /* ═══════════════ HEADER ═══════════════ */
+      .header {
+        background: linear-gradient(
+          135deg,
+          #1a0a3a 0%,
+          #2d1060 45%,
+          #1a0a3a 100%
+        );
+        padding: 52px 40px 44px;
+        text-align: center;
+        position: relative;
+        border-bottom: 2px solid #4a2080;
+      }
+      .header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 22px,
+          rgba(255, 255, 255, 0.012) 22px,
+          rgba(255, 255, 255, 0.012) 44px
+        );
+        pointer-events: none;
+      }
+      .header-trophy {
+        font-size: 58px;
+        line-height: 1;
+        margin-bottom: 12px;
+        filter: drop-shadow(0 0 22px rgba(255, 200, 0, 0.55));
+      }
+      .header h1 {
+        font-family: "Oswald", sans-serif;
+        font-size: 50px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        text-shadow: 0 0 32px rgba(180, 100, 255, 0.75);
+      }
+      .header h1 span {
+        color: #f0c040;
+      }
+      .header-sub {
+        font-size: 12px;
+        color: #8070b0;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        margin-top: 8px;
+      }
+      .header-divider {
+        width: 160px;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #f0c040, transparent);
+        margin: 14px auto 0;
+        border-radius: 2px;
+      }
+      .header-stats {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 22px;
+      }
+      .hstat {
+        text-align: center;
+      }
+      .hstat .val {
+        font-family: "Oswald", sans-serif;
+        font-size: 26px;
+        font-weight: 700;
+        color: #f0c040;
+      }
+      .hstat .lbl {
+        font-size: 10px;
+        color: #6050a0;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-top: 2px;
+      }
+      .hstat-sep {
+        width: 1px;
+        background: rgba(255, 255, 255, 0.08);
+        margin: 4px 0;
+      }
 
-  /* ═══════════════ SECTION LABEL ═══════════════ */
-  .section-wrap { padding: 0 28px; }
-  .section-label {
-    display:flex; align-items:center; gap:14px;
-    padding: 28px 0 14px;
-  }
-  .section-label .badge {
-    font-family:'Oswald',sans-serif;
-    font-size:10px; font-weight:700;
-    letter-spacing:3px; text-transform:uppercase;
-    padding:4px 14px; border-radius:20px; white-space:nowrap;
-  }
-  .badge-teams  { background:rgba(160,96,255,0.12); color:#a060ff; border:1px solid rgba(160,96,255,0.25); }
-  .badge-group  { background:rgba(140,80,255,0.12);  color:#a060ff; border:1px solid rgba(140,80,255,0.25); }
-  .badge-semi   { background:rgba(255,160,0,0.12);   color:#ffa000; border:1px solid rgba(255,160,0,0.25); }
-  .badge-final  { background:rgba(240,192,64,0.14);  color:#f0c040; border:1px solid rgba(240,192,64,0.35); }
-  .section-label .line { flex:1; height:1px; background:rgba(255,255,255,0.05); }
-  .section-label .note { font-size:10px; color:#3a3a6a; letter-spacing:2px; white-space:nowrap; }
+      /* ═══════════════ SECTION LABEL ═══════════════ */
+      .section-wrap {
+        padding: 0 28px;
+      }
+      .section-label {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 28px 0 14px;
+      }
+      .section-label .badge {
+        font-family: "Oswald", sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        padding: 4px 14px;
+        border-radius: 20px;
+        white-space: nowrap;
+      }
+      .badge-teams {
+        background: rgba(160, 96, 255, 0.12);
+        color: #a060ff;
+        border: 1px solid rgba(160, 96, 255, 0.25);
+      }
+      .badge-group {
+        background: rgba(140, 80, 255, 0.12);
+        color: #a060ff;
+        border: 1px solid rgba(140, 80, 255, 0.25);
+      }
+      .badge-semi {
+        background: rgba(255, 160, 0, 0.12);
+        color: #ffa000;
+        border: 1px solid rgba(255, 160, 0, 0.25);
+      }
+      .badge-final {
+        background: rgba(240, 192, 64, 0.14);
+        color: #f0c040;
+        border: 1px solid rgba(240, 192, 64, 0.35);
+      }
+      .section-label .line {
+        flex: 1;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .section-label .note {
+        font-size: 10px;
+        color: #3a3a6a;
+        letter-spacing: 2px;
+        white-space: nowrap;
+      }
 
-  /* ═══════════════ TEAMS GRID ═══════════════ */
-  .teams-grid {
-    display:grid; grid-template-columns:1fr 1fr;
-    gap:2px; background:#1e1e38; margin:0 28px;
-    border-radius:14px; overflow:hidden;
-    border:1px solid #1e1e38;
-  }
+      /* ═══════════════ TEAMS GRID ═══════════════ */
+      .teams-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+        background: #1e1e38;
+        margin: 0 28px;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid #1e1e38;
+      }
 
-  .team-card {
-    padding:24px 22px;
-    position:relative; overflow:hidden;
-  }
-  .team-card::after {
-    content:'';
-    position:absolute; inset:0;
-    opacity:0.05;
-    background-size:28px 28px;
-    background-image:radial-gradient(circle,currentColor 1px,transparent 1px);
-    pointer-events:none;
-  }
+      .team-card {
+        padding: 24px 22px;
+        position: relative;
+        overflow: hidden;
+      }
+      .team-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.05;
+        background-size: 28px 28px;
+        background-image: radial-gradient(
+          circle,
+          currentColor 1px,
+          transparent 1px
+        );
+        pointer-events: none;
+      }
 
-  .team-golden  { background:linear-gradient(135deg,#181200,#221a00); border-top:3px solid #f0c040; }
-  .team-golden::after  { color:#f0c040; }
-  .team-blazing { background:linear-gradient(135deg,#180500,#260c00); border-top:3px solid #ff5500; }
-  .team-blazing::after { color:#ff5500; }
-  .team-thunder { background:linear-gradient(135deg,#00091a,#001428); border-top:3px solid #00aaff; }z
-  .team-thunder::after { color:#00aaff; }
-  .team-sixers  { background:linear-gradient(135deg,#001506,#002010); border-top:3px solid #00e060; }
-  .team-sixers::after  { color:#00e060; }
+      .team-golden {
+        background: linear-gradient(135deg, #181200, #221a00);
+        border-top: 3px solid #f0c040;
+      }
+      .team-golden::after {
+        color: #f0c040;
+      }
+      .team-blazing {
+        background: linear-gradient(135deg, #180500, #260c00);
+        border-top: 3px solid #ff5500;
+      }
+      .team-blazing::after {
+        color: #ff5500;
+      }
+      .team-thunder {
+        background: linear-gradient(135deg, #00091a, #001428);
+        border-top: 3px solid #00aaff;
+      }
+      z .team-thunder::after {
+        color: #00aaff;
+      }
+      .team-sixers {
+        background: linear-gradient(135deg, #001506, #002010);
+        border-top: 3px solid #00e060;
+      }
+      .team-sixers::after {
+        color: #00e060;
+      }
 
-  .team-hdr { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
-  .team-emoji { font-size:28px; line-height:1; }
-  .team-name {
-    font-family:'Oswald',sans-serif;
-    font-size:18px; font-weight:700;
-    letter-spacing:1.5px; text-transform:uppercase;
-  }
-  .team-golden  .team-name { color:#f0c040; text-shadow:0 0 12px rgba(240,192,64,0.45); }
-  .team-blazing .team-name { color:#ff6622; text-shadow:0 0 12px rgba(255,102,34,0.45); }
-  .team-thunder .team-name { color:#22aaff; text-shadow:0 0 12px rgba(34,170,255,0.45); }
-  .team-sixers  .team-name { color:#00e060; text-shadow:0 0 12px rgba(0,224,96,0.45); }
+      .team-hdr {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .team-emoji {
+        font-size: 28px;
+        line-height: 1;
+      }
+      .team-name {
+        font-family: "Oswald", sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+      .team-golden .team-name {
+        color: #f0c040;
+        text-shadow: 0 0 12px rgba(240, 192, 64, 0.45);
+      }
+      .team-blazing .team-name {
+        color: #ff6622;
+        text-shadow: 0 0 12px rgba(255, 102, 34, 0.45);
+      }
+      .team-thunder .team-name {
+        color: #22aaff;
+        text-shadow: 0 0 12px rgba(34, 170, 255, 0.45);
+      }
+      .team-sixers .team-name {
+        color: #00e060;
+        text-shadow: 0 0 12px rgba(0, 224, 96, 0.45);
+      }
 
-  .players-list { list-style:none; }
-  .player-item {
-    display:flex; align-items:center; gap:8px;
-    padding:6px 0;
-    border-bottom:1px solid rgba(255,255,255,0.045);
-    color:#b0a8c8; font-size:13px;
-  }
-  .player-item:last-child { border-bottom:none; }
-  .player-captain { font-weight:600; color:#fff; font-size:14px; }
+      .players-list {
+        list-style: none;
+      }
+      .player-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+        color: #b0a8c8;
+        font-size: 13px;
+      }
+      .player-item:last-child {
+        border-bottom: none;
+      }
+      .player-captain {
+        font-weight: 600;
+        color: #fff;
+        font-size: 14px;
+      }
 
-  .captain-badge {
-    font-size:10px; padding:2px 7px;
-    border-radius:20px; font-weight:600;
-    letter-spacing:0.5px; margin-left:auto;
-  }
-  .team-golden  .captain-badge { background:rgba(240,192,64,0.18); color:#f0c040; border:1px solid rgba(240,192,64,0.38); }
-  .team-blazing .captain-badge { background:rgba(255,102,34,0.18); color:#ff6622; border:1px solid rgba(255,102,34,0.38); }
-  .team-thunder .captain-badge { background:rgba(34,170,255,0.18); color:#22aaff; border:1px solid rgba(34,170,255,0.38); }
-  .team-sixers  .captain-badge { background:rgba(0,224,96,0.18);   color:#00e060; border:1px solid rgba(0,224,96,0.38); }
+      .captain-badge {
+        font-size: 10px;
+        padding: 2px 7px;
+        border-radius: 20px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin-left: auto;
+      }
+      .team-golden .captain-badge {
+        background: rgba(240, 192, 64, 0.18);
+        color: #f0c040;
+        border: 1px solid rgba(240, 192, 64, 0.38);
+      }
+      .team-blazing .captain-badge {
+        background: rgba(255, 102, 34, 0.18);
+        color: #ff6622;
+        border: 1px solid rgba(255, 102, 34, 0.38);
+      }
+      .team-thunder .captain-badge {
+        background: rgba(34, 170, 255, 0.18);
+        color: #22aaff;
+        border: 1px solid rgba(34, 170, 255, 0.38);
+      }
+      .team-sixers .captain-badge {
+        background: rgba(0, 224, 96, 0.18);
+        color: #00e060;
+        border: 1px solid rgba(0, 224, 96, 0.38);
+      }
 
-  .player-dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; }
-  .team-golden  .player-dot { background:#f0c04055; }
-  .team-blazing .player-dot { background:#ff662255; }
-  .team-thunder .player-dot { background:#22aaff55; }
-  .team-sixers  .player-dot { background:#00e06055; }
+      .player-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .team-golden .player-dot {
+        background: #f0c04055;
+      }
+      .team-blazing .player-dot {
+        background: #ff662255;
+      }
+      .team-thunder .player-dot {
+        background: #22aaff55;
+      }
+      .team-sixers .player-dot {
+        background: #00e06055;
+      }
 
-  /* ═══════════════ SCHEDULE ═══════════════ */
-  .schedule-section { padding: 0 28px 28px; }
+      /* ═══════════════ SCHEDULE ═══════════════ */
+      .schedule-section {
+        padding: 0 28px 28px;
+      }
 
-  .day-card {
-    background:linear-gradient(135deg,#0e0e1c,#13132a);
-    border:1px solid #1c1c38;
-    border-radius:12px;
-    overflow:hidden;
-    margin-bottom:10px;
-  }
-  .day-card:hover { border-color:#2e2e52; }
+      .day-card {
+        background: linear-gradient(135deg, #0e0e1c, #13132a);
+        border: 1px solid #1c1c38;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 10px;
+      }
+      .day-card:hover {
+        border-color: #2e2e52;
+      }
 
-  .day-hdr {
-    display:flex; align-items:center; justify-content:space-between;
-    padding:10px 18px;
-    background:rgba(255,255,255,0.025);
-    border-bottom:1px solid #1c1c38;
-  }
-  .day-lbl {
-    font-family:'Oswald',sans-serif;
-    font-size:11px; font-weight:600;
-    color:#7050a0; letter-spacing:2px; text-transform:uppercase;
-  }
-  .day-note { font-size:10px; color:#3a3a6a; letter-spacing:1px; }
+      .day-hdr {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 18px;
+        background: rgba(255, 255, 255, 0.025);
+        border-bottom: 1px solid #1c1c38;
+      }
+      .day-lbl {
+        font-family: "Oswald", sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        color: #7050a0;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .day-note {
+        font-size: 10px;
+        color: #3a3a6a;
+        letter-spacing: 1px;
+      }
 
-  .match-row {
-    display:flex; align-items:center;
-    padding:13px 18px; gap:10px;
-    border-bottom:1px solid rgba(255,255,255,0.035);
-  }
-  .match-row:last-child { border-bottom:none; }
+      .match-row {
+        display: flex;
+        align-items: center;
+        padding: 13px 18px;
+        gap: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+      }
+      .match-row:last-child {
+        border-bottom: none;
+      }
 
-  .match-num-lbl {
-    font-family:'Oswald',sans-serif;
-    font-size:10px; color:#3a3a6a;
-    width:28px; flex-shrink:0; font-weight:600; letter-spacing:1px;
-  }
+      .match-num-lbl {
+        font-family: "Oswald", sans-serif;
+        font-size: 10px;
+        color: #3a3a6a;
+        width: 28px;
+        flex-shrink: 0;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
 
-  .team-side {
-    display:flex; align-items:center; gap:7px;
-    flex:1;
-  }
-  .team-side.right { justify-content:flex-end; }
+      .team-side {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        flex: 1;
+      }
+      .team-side.right {
+        justify-content: flex-end;
+      }
 
-  .color-pip { width:3px; height:30px; border-radius:2px; flex-shrink:0; }
-  .t-emoji { font-size:16px; line-height:1; }
-  .t-name { font-size:13px; font-weight:600; color:#e8e0f8; }
+      .color-pip {
+        width: 3px;
+        height: 30px;
+        border-radius: 2px;
+        flex-shrink: 0;
+      }
+      .t-emoji {
+        font-size: 16px;
+        line-height: 1;
+      }
+      .t-name {
+        font-size: 13px;
+        font-weight: 600;
+        color: #e8e0f8;
+      }
 
-  .vs-pill {
-    font-family:'Oswald',sans-serif;
-    font-size:11px; font-weight:700;
-    color:#5050a0;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.06);
-    padding:3px 10px; border-radius:16px;
-    flex-shrink:0; letter-spacing:1px;
-  }
+      .vs-pill {
+        font-family: "Oswald", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        color: #5050a0;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 3px 10px;
+        border-radius: 16px;
+        flex-shrink: 0;
+        letter-spacing: 1px;
+      }
 
-  .match-badge {
-    font-size:9px; padding:2px 7px;
-    border-radius:10px; font-weight:600;
-    letter-spacing:0.5px; flex-shrink:0; margin-left:4px;
-  }
-  .mb-a { background:rgba(140,80,255,0.12); color:#9060e0; border:1px solid rgba(140,80,255,0.25); }
-  .mb-b { background:rgba(60,100,255,0.12);  color:#6080e0; border:1px solid rgba(60,100,255,0.25); }
+      .match-badge {
+        font-size: 9px;
+        padding: 2px 7px;
+        border-radius: 10px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        flex-shrink: 0;
+        margin-left: 4px;
+      }
+      .mb-a {
+        background: rgba(140, 80, 255, 0.12);
+        color: #9060e0;
+        border: 1px solid rgba(140, 80, 255, 0.25);
+      }
+      .mb-b {
+        background: rgba(60, 100, 255, 0.12);
+        color: #6080e0;
+        border: 1px solid rgba(60, 100, 255, 0.25);
+      }
 
-  .result-flag {
-    font-family:'Oswald',sans-serif;
-    font-size:8px; font-weight:700;
-    padding:2px 6px; border-radius:8px;
-    letter-spacing:0.5px; flex-shrink:0;
-  }
-  .result-flag.win  { background:rgba(0,224,96,0.14);  color:#3ad17a; border:1px solid rgba(0,224,96,0.35); }
-  .result-flag.loss { background:rgba(255,60,60,0.12); color:#ff6b6b; border:1px solid rgba(255,60,60,0.3); }
-  .result-flag.draw { background:rgba(160,96,255,0.14); color:#b88aff; border:1px solid rgba(160,96,255,0.32); }
-  .match-row.is-done { background:rgba(255,255,255,0.015); }
+      .result-flag {
+        font-family: "Oswald", sans-serif;
+        font-size: 8px;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 8px;
+        letter-spacing: 0.5px;
+        flex-shrink: 0;
+      }
+      .result-flag.win {
+        background: rgba(0, 224, 96, 0.14);
+        color: #3ad17a;
+        border: 1px solid rgba(0, 224, 96, 0.35);
+      }
+      .result-flag.loss {
+        background: rgba(255, 60, 60, 0.12);
+        color: #ff6b6b;
+        border: 1px solid rgba(255, 60, 60, 0.3);
+      }
+      .result-flag.draw {
+        background: rgba(160, 96, 255, 0.14);
+        color: #b88aff;
+        border: 1px solid rgba(160, 96, 255, 0.32);
+      }
+      .match-row.is-done {
+        background: rgba(255, 255, 255, 0.015);
+      }
 
-  .match-roster {
-    padding:0 18px 14px 46px;
-    border-bottom:1px solid rgba(255,255,255,0.035);
-  }
-  .roster-table {
-    width:100%; border-collapse:collapse;
-    background:rgba(255,255,255,0.015);
-    border:1px solid rgba(255,255,255,0.05); border-radius:8px; overflow:hidden;
-  }
-  .roster-table th {
-    font-family:'Oswald',sans-serif;
-    font-size:10px; font-weight:700; letter-spacing:0.5px;
-    text-align:left; padding:7px 12px;
-    background:rgba(255,255,255,0.03);
-    border-bottom:1px solid rgba(255,255,255,0.06);
-  }
-  .roster-table td {
-    font-size:11px; color:#b0b0d0; padding:5px 12px;
-    border-bottom:1px solid rgba(255,255,255,0.03);
-    width:50%; vertical-align:top;
-  }
-  .roster-table td + td { border-left:1px solid rgba(255,255,255,0.04); }
-  .roster-table tr:last-child td { border-bottom:none; }
-  .roster-table .cap { color:#fff; font-weight:600; }
+      .match-roster {
+        padding: 0 18px 14px 46px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+      }
+      .roster-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(255, 255, 255, 0.015);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .roster-table th {
+        font-family: "Oswald", sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-align: left;
+        padding: 7px 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .roster-table td {
+        font-size: 11px;
+        color: #b0b0d0;
+        padding: 5px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        width: 50%;
+        vertical-align: top;
+      }
+      .roster-table td + td {
+        border-left: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .roster-table tr:last-child td {
+        border-bottom: none;
+      }
+      .roster-table .cap {
+        color: #fff;
+        font-weight: 600;
+      }
 
-  /* ═══════════════ PLAYER PERFORMANCE ═══════════════ */
-  .perf-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-  .perf-card {
-    background:rgba(255,255,255,0.015);
-    border:1px solid rgba(255,255,255,0.05);
-    border-radius:10px; overflow:hidden;
-  }
-  .perf-hdr {
-    display:flex; align-items:center; gap:8px;
-    font-family:'Oswald',sans-serif; font-size:12px; font-weight:700;
-    letter-spacing:0.5px; padding:9px 12px;
-    background:rgba(255,255,255,0.03);
-    border-bottom:1px solid rgba(255,255,255,0.06);
-  }
-  .perf-table { width:100%; border-collapse:collapse; }
-  .perf-table thead th {
-    font-family:'Oswald',sans-serif; font-size:9px; font-weight:600;
-    letter-spacing:0.5px; color:#5a5a8a; text-transform:uppercase;
-    padding:5px 12px; border-bottom:1px solid rgba(255,255,255,0.05);
-    text-align:center;
-  }
-  .perf-table thead th.pl-col { text-align:left; }
-  .perf-table td {
-    font-size:11px; color:#b0b0d0; padding:5px 12px;
-    border-bottom:1px solid rgba(255,255,255,0.03);
-  }
-  .perf-table tr:last-child td { border-bottom:none; }
-  .perf-table td.num { text-align:center; width:46px; font-family:'Oswald',sans-serif; font-weight:600; }
-  .perf-table td.fours { color:#3ad17a; }
-  .perf-table td.wkts  { color:#ff8a5a; }
-  .perf-table tr.cap-row td.pl { color:#fff; font-weight:600; }
-  @media (max-width:560px){ .perf-grid { grid-template-columns:1fr; } }
+      /* ═══════════════ PLAYER PERFORMANCE ═══════════════ */
+      .perf-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .perf-card {
+        background: rgba(255, 255, 255, 0.015);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .perf-hdr {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "Oswald", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        padding: 9px 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .perf-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .perf-table thead th {
+        font-family: "Oswald", sans-serif;
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: #5a5a8a;
+        text-transform: uppercase;
+        padding: 5px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        text-align: center;
+      }
+      .perf-table thead th.pl-col {
+        text-align: left;
+      }
+      .perf-table td {
+        font-size: 11px;
+        color: #b0b0d0;
+        padding: 5px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      }
+      .perf-table tr:last-child td {
+        border-bottom: none;
+      }
+      .perf-table td.num {
+        text-align: center;
+        width: 46px;
+        font-family: "Oswald", sans-serif;
+        font-weight: 600;
+      }
+      .perf-table td.fours {
+        color: #3ad17a;
+      }
+      .perf-table td.wkts {
+        color: #ff8a5a;
+      }
+      .perf-table tr.cap-row td.pl {
+        color: #fff;
+        font-weight: 600;
+      }
+      @media (max-width: 560px) {
+        .perf-grid {
+          grid-template-columns: 1fr;
+        }
+      }
 
-  /* Semi / Final special */
-  .match-row.is-semi { background:rgba(255,160,0,0.03); }
-  .match-row.is-final { background:rgba(240,192,64,0.04); padding:16px 18px; }
-  .is-final .t-name { font-size:14px; }
-  .is-final .vs-pill {
-    background:rgba(240,192,64,0.08);
-    border-color:rgba(240,192,64,0.3);
-    color:#f0c040; font-size:12px; padding:4px 12px;
-  }
+      /* Semi / Final special */
+      .match-row.is-semi {
+        background: rgba(255, 160, 0, 0.03);
+      }
+      .match-row.is-final {
+        background: rgba(240, 192, 64, 0.04);
+        padding: 16px 18px;
+      }
+      .is-final .t-name {
+        font-size: 14px;
+      }
+      .is-final .vs-pill {
+        background: rgba(240, 192, 64, 0.08);
+        border-color: rgba(240, 192, 64, 0.3);
+        color: #f0c040;
+        font-size: 12px;
+        padding: 4px 12px;
+      }
 
-  /* ═══════════════ BOTTOM STRIP ═══════════════ */
-  .bottom-strip {
-    display:flex; align-items:center; justify-content:space-between;
-    padding:22px 36px;
-    background:linear-gradient(135deg,#0a0a18,#101020);
-    border-top:2px solid #1e1e3a;
-  }
-  .bstat { text-align:center; }
-  .bstat .val {
-    font-family:'Oswald',sans-serif;
-    font-size:24px; font-weight:700; color:#f0c040;
-  }
-  .bstat .lbl { font-size:10px; color:#4040a0; letter-spacing:2px; text-transform:uppercase; margin-top:2px; }
-  .battle-txt {
-    font-family:'Oswald',sans-serif;
-    font-size:16px; color:#8060d0;
-    letter-spacing:3px; text-transform:uppercase; text-align:center;
-  }
-  .battle-txt small { display:block; font-size:11px; color:#4040a0; letter-spacing:2px; margin-top:3px; }
+      /* ═══════════════ BOTTOM STRIP ═══════════════ */
+      .bottom-strip {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 22px 36px;
+        background: linear-gradient(135deg, #0a0a18, #101020);
+        border-top: 2px solid #1e1e3a;
+      }
+      .bstat {
+        text-align: center;
+      }
+      .bstat .val {
+        font-family: "Oswald", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #f0c040;
+      }
+      .bstat .lbl {
+        font-size: 10px;
+        color: #4040a0;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-top: 2px;
+      }
+      .battle-txt {
+        font-family: "Oswald", sans-serif;
+        font-size: 16px;
+        color: #8060d0;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      .battle-txt small {
+        display: block;
+        font-size: 11px;
+        color: #4040a0;
+        letter-spacing: 2px;
+        margin-top: 3px;
+      }
 
-  /* ═══════════════ POINTS TABLE ═══════════════ */
-  .points-section { padding: 0 28px; }
-  .pts-table-wrap {
-    background:linear-gradient(135deg,#0e0e1c,#13132a);
-    border:1px solid #1c1c38;
-    border-radius:14px;
-    overflow:hidden;
-  }
-  .pts-table { width:100%; border-collapse:collapse; }
-  .pts-table thead th {
-    font-family:'Oswald',sans-serif;
-    font-size:10px; font-weight:600;
-    color:#7050a0; letter-spacing:1.5px; text-transform:uppercase;
-    text-align:center; padding:12px 6px;
-    background:rgba(255,255,255,0.025);
-    border-bottom:1px solid #1c1c38;
-  }
-  .pts-table thead th.team-col { text-align:left; padding-left:16px; }
-  .pts-table tbody td {
-    font-size:13px; color:#b0a8c8; text-align:center;
-    padding:14px 6px;
-    border-bottom:1px solid rgba(255,255,255,0.035);
-  }
-  .pts-table tbody tr:last-child td { border-bottom:none; }
-  .pts-table tbody tr:hover td { background:rgba(255,255,255,0.02); }
+      /* ═══════════════ POINTS TABLE ═══════════════ */
+      .points-section {
+        padding: 0 28px;
+      }
+      .pts-table-wrap {
+        background: linear-gradient(135deg, #0e0e1c, #13132a);
+        border: 1px solid #1c1c38;
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .pts-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .pts-table thead th {
+        font-family: "Oswald", sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        color: #7050a0;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 12px 6px;
+        background: rgba(255, 255, 255, 0.025);
+        border-bottom: 1px solid #1c1c38;
+      }
+      .pts-table thead th.team-col {
+        text-align: left;
+        padding-left: 16px;
+      }
+      .pts-table tbody td {
+        font-size: 13px;
+        color: #b0a8c8;
+        text-align: center;
+        padding: 14px 6px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+      }
+      .pts-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+      .pts-table tbody tr:hover td {
+        background: rgba(255, 255, 255, 0.02);
+      }
 
-  .pts-pos {
-    font-family:'Oswald',sans-serif; font-weight:700;
-    font-size:14px; width:42px;
-  }
-  .pts-team-cell {
-    display:flex; align-items:center; gap:9px;
-    text-align:left; padding-left:16px !important;
-  }
-  .pts-team-cell .pip { width:3px; height:24px; border-radius:2px; flex-shrink:0; }
-  .pts-team-cell .emj { font-size:18px; line-height:1; }
-  .pts-team-cell .nm {
-    font-family:'Oswald',sans-serif; font-weight:600;
-    font-size:13px; letter-spacing:0.5px; text-transform:uppercase;
-  }
-  .pts-val { font-weight:700; color:#e8e0f8; font-family:'Oswald',sans-serif; font-size:15px; }
-  .pts-nrr.pos { color:#80e880; }
-  .pts-nrr.neg { color:#e88080; }
+      .pts-pos {
+        font-family: "Oswald", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        width: 42px;
+      }
+      .pts-team-cell {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        text-align: left;
+        padding-left: 16px !important;
+      }
+      .pts-team-cell .pip {
+        width: 3px;
+        height: 24px;
+        border-radius: 2px;
+        flex-shrink: 0;
+      }
+      .pts-team-cell .emj {
+        font-size: 18px;
+        line-height: 1;
+      }
+      .pts-team-cell .nm {
+        font-family: "Oswald", sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .pts-val {
+        font-weight: 700;
+        color: #e8e0f8;
+        font-family: "Oswald", sans-serif;
+        font-size: 15px;
+      }
+      .pts-nrr.pos {
+        color: #80e880;
+      }
+      .pts-nrr.neg {
+        color: #e88080;
+      }
 
-  /* qualify accent — left border per row by team */
-  .pts-row-golden  td:first-child { box-shadow:inset 3px 0 0 #f0c040; }
-  .pts-row-blazing td:first-child { box-shadow:inset 3px 0 0 #ff6622; }
-  .pts-row-thunder td:first-child { box-shadow:inset 3px 0 0 #22aaff; }
-  .pts-row-sixers  td:first-child { box-shadow:inset 3px 0 0 #00e060; }
+      /* qualify accent — left border per row by team */
+      .pts-row-golden td:first-child {
+        box-shadow: inset 3px 0 0 #f0c040;
+      }
+      .pts-row-blazing td:first-child {
+        box-shadow: inset 3px 0 0 #ff6622;
+      }
+      .pts-row-thunder td:first-child {
+        box-shadow: inset 3px 0 0 #22aaff;
+      }
+      .pts-row-sixers td:first-child {
+        box-shadow: inset 3px 0 0 #00e060;
+      }
 
-  .pts-row-golden  .nm { color:#f0c040; }
-  .pts-row-blazing .nm { color:#ff6622; }
-  .pts-row-thunder .nm { color:#22aaff; }
-  .pts-row-sixers  .nm { color:#00e060; }
+      .pts-row-golden .nm {
+        color: #f0c040;
+      }
+      .pts-row-blazing .nm {
+        color: #ff6622;
+      }
+      .pts-row-thunder .nm {
+        color: #22aaff;
+      }
+      .pts-row-sixers .nm {
+        color: #00e060;
+      }
 
-  .qual-tag {
-    font-size:9px; font-weight:600; letter-spacing:0.5px;
-    padding:2px 7px; border-radius:10px; margin-left:6px;
-    background:rgba(0,224,96,0.12); color:#00e060;
-    border:1px solid rgba(0,224,96,0.28);
-  }
-  .qual-tag.out { background:rgba(255,255,255,0.04); color:#5a5a7a; border-color:rgba(255,255,255,0.08); }
+      .qual-tag {
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        padding: 2px 7px;
+        border-radius: 10px;
+        margin-left: 6px;
+        background: rgba(0, 224, 96, 0.12);
+        color: #00e060;
+        border: 1px solid rgba(0, 224, 96, 0.28);
+      }
+      .qual-tag.out {
+        background: rgba(255, 255, 255, 0.04);
+        color: #5a5a7a;
+        border-color: rgba(255, 255, 255, 0.08);
+      }
 
-  /* ═══════════════ RESPONSIVE ═══════════════ */
+      /* ═══════════════ RESPONSIVE ═══════════════ */
 
-  /* ≤ 768px — tablet */
-  @media (max-width: 768px) {
-    body { padding: 24px 14px; }
-    .poster { border-radius:18px; }
+      /* ≤ 768px — tablet */
+      @media (max-width: 768px) {
+        body {
+          padding: 24px 14px;
+        }
+        .poster {
+          border-radius: 18px;
+        }
 
-    .header { padding: 40px 24px 34px; }
-    .header-trophy { font-size:48px; }
-    .header h1 { font-size:38px; letter-spacing:3px; }
-    .header-sub { font-size:11px; letter-spacing:4px; }
-    .header-stats { flex-wrap:wrap; gap:20px 28px; }
-    .hstat-sep { display:none; }
-    .hstat .val { font-size:22px; }
+        .header {
+          padding: 40px 24px 34px;
+        }
+        .header-trophy {
+          font-size: 48px;
+        }
+        .header h1 {
+          font-size: 38px;
+          letter-spacing: 3px;
+        }
+        .header-sub {
+          font-size: 11px;
+          letter-spacing: 4px;
+        }
+        .header-stats {
+          flex-wrap: wrap;
+          gap: 20px 28px;
+        }
+        .hstat-sep {
+          display: none;
+        }
+        .hstat .val {
+          font-size: 22px;
+        }
 
-    .section-wrap { padding:0 18px; }
-    .teams-grid { margin:0 18px; }
-    .schedule-section { padding:0 18px 22px; }
+        .section-wrap {
+          padding: 0 18px;
+        }
+        .teams-grid {
+          margin: 0 18px;
+        }
+        .schedule-section {
+          padding: 0 18px 22px;
+        }
 
-    .team-card { padding:20px 18px; }
+        .team-card {
+          padding: 20px 18px;
+        }
 
-    .bottom-strip { padding:18px 20px; gap:12px; }
-    .battle-txt { font-size:14px; letter-spacing:2px; }
-    .bstat .val { font-size:20px; }
-  }
+        .bottom-strip {
+          padding: 18px 20px;
+          gap: 12px;
+        }
+        .battle-txt {
+          font-size: 14px;
+          letter-spacing: 2px;
+        }
+        .bstat .val {
+          font-size: 20px;
+        }
+      }
 
-  /* ≤ 560px — large phone: single-column teams, stacked match rows */
-  @media (max-width: 560px) {
-    body { padding: 18px 10px; }
+      /* ≤ 560px — large phone: single-column teams, stacked match rows */
+      @media (max-width: 560px) {
+        body {
+          padding: 18px 10px;
+        }
 
-    .header { padding: 32px 18px 28px; }
-    .header-trophy { font-size:42px; }
-    .header h1 { font-size:30px; letter-spacing:2px; }
-    .header-sub { font-size:10px; letter-spacing:3px; }
-    .header-stats { gap:16px 22px; }
-    .hstat .val { font-size:20px; }
-    .hstat .lbl { font-size:9px; }
+        .header {
+          padding: 32px 18px 28px;
+        }
+        .header-trophy {
+          font-size: 42px;
+        }
+        .header h1 {
+          font-size: 30px;
+          letter-spacing: 2px;
+        }
+        .header-sub {
+          font-size: 10px;
+          letter-spacing: 3px;
+        }
+        .header-stats {
+          gap: 16px 22px;
+        }
+        .hstat .val {
+          font-size: 20px;
+        }
+        .hstat .lbl {
+          font-size: 9px;
+        }
 
-    .section-wrap { padding:0 12px; }
-    .teams-grid { grid-template-columns:1fr; margin:0 12px; }
-    .schedule-section { padding:0 12px 18px; }
+        .section-wrap {
+          padding: 0 12px;
+        }
+        .teams-grid {
+          grid-template-columns: 1fr;
+          margin: 0 12px;
+        }
+        .schedule-section {
+          padding: 0 12px 18px;
+        }
 
-    .pts-table thead th { font-size:9px; padding:10px 3px; letter-spacing:1px; }
-    .pts-table tbody td { font-size:12px; padding:12px 3px; }
-    .pts-team-cell { gap:6px; padding-left:10px !important; }
-    .pts-team-cell .nm { font-size:11px; }
-    .pts-team-cell .emj { font-size:15px; }
-    .qual-tag { display:none; }
+        .pts-table thead th {
+          font-size: 9px;
+          padding: 10px 3px;
+          letter-spacing: 1px;
+        }
+        .pts-table tbody td {
+          font-size: 12px;
+          padding: 12px 3px;
+        }
+        .pts-team-cell {
+          gap: 6px;
+          padding-left: 10px !important;
+        }
+        .pts-team-cell .nm {
+          font-size: 11px;
+        }
+        .pts-team-cell .emj {
+          font-size: 15px;
+        }
+        .qual-tag {
+          display: none;
+        }
 
-    .section-label { gap:10px; padding:22px 0 12px; }
-    .section-label .badge { font-size:9px; letter-spacing:2px; padding:4px 11px; }
-    .section-label .note { font-size:9px; }
+        .section-label {
+          gap: 10px;
+          padding: 22px 0 12px;
+        }
+        .section-label .badge {
+          font-size: 9px;
+          letter-spacing: 2px;
+          padding: 4px 11px;
+        }
+        .section-label .note {
+          font-size: 9px;
+        }
 
-    .team-name { font-size:16px; }
-    .team-emoji { font-size:24px; }
+        .team-name {
+          font-size: 16px;
+        }
+        .team-emoji {
+          font-size: 24px;
+        }
 
-    /* Keep match on one line, just shrink */
-    .match-row { padding:11px 12px; gap:6px; }
-    .match-num-lbl { width:20px; font-size:9px; }
-    .team-side { gap:5px; min-width:0; }
-    .t-emoji { font-size:14px; }
-    .t-name { font-size:11px; }
-    .vs-pill { font-size:9px; padding:3px 7px; }
-    .color-pip { height:24px; }
-    .match-badge { display:none; }
+        /* Keep match on one line, just shrink */
+        .match-row {
+          padding: 11px 12px;
+          gap: 6px;
+        }
+        .match-num-lbl {
+          width: 20px;
+          font-size: 9px;
+        }
+        .team-side {
+          gap: 5px;
+          min-width: 0;
+        }
+        .t-emoji {
+          font-size: 14px;
+        }
+        .t-name {
+          font-size: 11px;
+        }
+        .vs-pill {
+          font-size: 9px;
+          padding: 3px 7px;
+        }
+        .color-pip {
+          height: 24px;
+        }
+        .match-badge {
+          display: none;
+        }
 
-    .day-hdr { padding:9px 14px; }
+        .day-hdr {
+          padding: 9px 14px;
+        }
 
-    .bottom-strip { flex-direction:column; text-align:center; padding:18px; }
-  }
+        .bottom-strip {
+          flex-direction: column;
+          text-align: center;
+          padding: 18px;
+        }
+      }
 
-  /* ≤ 380px — small phone */
-  @media (max-width: 380px) {
-    .header h1 { font-size:26px; letter-spacing:1px; }
-    .header-trophy { font-size:38px; }
-    .header-stats { gap:14px 18px; }
-    .hstat .val { font-size:18px; }
+      /* ≤ 380px — small phone */
+      @media (max-width: 380px) {
+        .header h1 {
+          font-size: 26px;
+          letter-spacing: 1px;
+        }
+        .header-trophy {
+          font-size: 38px;
+        }
+        .header-stats {
+          gap: 14px 18px;
+        }
+        .hstat .val {
+          font-size: 18px;
+        }
 
-    .team-name { font-size:15px; letter-spacing:1px; }
-    .player-item { font-size:12px; }
+        .team-name {
+          font-size: 15px;
+          letter-spacing: 1px;
+        }
+        .player-item {
+          font-size: 12px;
+        }
 
-    .t-name { font-size:11px; }
-    .vs-pill { font-size:10px; padding:3px 9px; }
-  }
+        .t-name {
+          font-size: 11px;
+        }
+        .vs-pill {
+          font-size: 10px;
+          padding: 3px 9px;
+        }
+      }
 
-  /* ≤ 320px — smallest target */
-  @media (max-width: 320px) {
-    body { padding: 14px 8px; }
+      /* ≤ 320px — smallest target */
+      @media (max-width: 320px) {
+        body {
+          padding: 14px 8px;
+        }
 
-    .header { padding: 26px 14px 24px; }
-    .header h1 { font-size:23px; }
-    .header-trophy { font-size:34px; }
-    .header-divider { width:120px; }
-    .header-stats { gap:12px 14px; }
-    .hstat .val { font-size:17px; }
-    .hstat .lbl { font-size:8px; letter-spacing:1px; }
+        .header {
+          padding: 26px 14px 24px;
+        }
+        .header h1 {
+          font-size: 23px;
+        }
+        .header-trophy {
+          font-size: 34px;
+        }
+        .header-divider {
+          width: 120px;
+        }
+        .header-stats {
+          gap: 12px 14px;
+        }
+        .hstat .val {
+          font-size: 17px;
+        }
+        .hstat .lbl {
+          font-size: 8px;
+          letter-spacing: 1px;
+        }
 
-    .section-wrap { padding:0 8px; }
-    .teams-grid { margin:0 8px; }
-    .schedule-section { padding:0 8px 14px; }
+        .section-wrap {
+          padding: 0 8px;
+        }
+        .teams-grid {
+          margin: 0 8px;
+        }
+        .schedule-section {
+          padding: 0 8px 14px;
+        }
 
-    .team-card { padding:16px 14px; }
-    .team-name { font-size:14px; }
-    .team-emoji { font-size:22px; }
-    .player-item { font-size:11px; gap:6px; }
-    .player-captain { font-size:12px; }
-    .captain-badge { font-size:9px; padding:2px 6px; }
+        .team-card {
+          padding: 16px 14px;
+        }
+        .team-name {
+          font-size: 14px;
+        }
+        .team-emoji {
+          font-size: 22px;
+        }
+        .player-item {
+          font-size: 11px;
+          gap: 6px;
+        }
+        .player-captain {
+          font-size: 12px;
+        }
+        .captain-badge {
+          font-size: 9px;
+          padding: 2px 6px;
+        }
 
-    .section-label .badge { font-size:8px; padding:3px 9px; letter-spacing:1px; }
-    .section-label .note { display:none; }
+        .section-label .badge {
+          font-size: 8px;
+          padding: 3px 9px;
+          letter-spacing: 1px;
+        }
+        .section-label .note {
+          display: none;
+        }
 
-    .match-row { padding:10px 10px; gap:5px; }
-    .t-name { font-size:10px; line-height:1.2; }
-    .t-emoji { font-size:13px; }
-    .color-pip { height:22px; }
-    .day-lbl { font-size:10px; }
+        .match-row {
+          padding: 10px 10px;
+          gap: 5px;
+        }
+        .t-name {
+          font-size: 10px;
+          line-height: 1.2;
+        }
+        .t-emoji {
+          font-size: 13px;
+        }
+        .color-pip {
+          height: 22px;
+        }
+        .day-lbl {
+          font-size: 10px;
+        }
 
-    /* hide L & T cols on tiniest screens to keep table readable */
-    .pts-table th:nth-child(5), .pts-table td:nth-child(5),
-    .pts-table th:nth-child(6), .pts-table td:nth-child(6) { display:none; }
-    .pts-team-cell .nm { font-size:10px; letter-spacing:0; }
-    .pts-table tbody td { font-size:11px; padding:11px 2px; }
-    .pts-val { font-size:13px; }
+        /* hide L & T cols on tiniest screens to keep table readable */
+        .pts-table th:nth-child(5),
+        .pts-table td:nth-child(5),
+        .pts-table th:nth-child(6),
+        .pts-table td:nth-child(6) {
+          display: none;
+        }
+        .pts-team-cell .nm {
+          font-size: 10px;
+          letter-spacing: 0;
+        }
+        .pts-table tbody td {
+          font-size: 11px;
+          padding: 11px 2px;
+        }
+        .pts-val {
+          font-size: 13px;
+        }
 
-    .bottom-strip { padding:16px 12px; }
-    .battle-txt { font-size:12px; letter-spacing:1px; }
-  }
-</style>
-</head>
-<body>
-<div class="poster">
+        .bottom-strip {
+          padding: 16px 12px;
+        }
+        .battle-txt {
+          font-size: 12px;
+          letter-spacing: 1px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="poster">
+      <!-- ══ HEADER ══ -->
+      <div class="header">
+        <div class="header-trophy">🏆</div>
+        <h1>Cricket <span>Tournament</span></h1>
+        <p class="header-sub">Four Teams &bull; One Champion</p>
+        <div class="header-divider"></div>
+        <div class="header-stats">
+          <div class="hstat">
+            <div class="val">4</div>
+            <div class="lbl">Teams</div>
+          </div>
+          <div class="hstat-sep"></div>
+          <div class="hstat">
+            <div class="val">24</div>
+            <div class="lbl">Players</div>
+          </div>
+          <div class="hstat-sep"></div>
+          <div class="hstat">
+            <div class="val">12</div>
+            <div class="lbl">Group Matches</div>
+          </div>
+          <div class="hstat-sep"></div>
+          <div class="hstat">
+            <div class="val">14</div>
+            <div class="lbl">Total Matches</div>
+          </div>
+          <div class="hstat-sep"></div>
+          <div class="hstat">
+            <div class="val">8</div>
+            <div class="lbl">Match Days</div>
+          </div>
+        </div>
+      </div>
 
-  <!-- ══ HEADER ══ -->
-  <div class="header">
-    <div class="header-trophy">🏆</div>
-    <h1>Cricket <span>Tournament</span></h1>
-    <p class="header-sub">Four Teams &bull; One Champion</p>
-    <div class="header-divider"></div>
-    <div class="header-stats">
-      <div class="hstat"><div class="val">4</div><div class="lbl">Teams</div></div>
-      <div class="hstat-sep"></div>
-      <div class="hstat"><div class="val">24</div><div class="lbl">Players</div></div>
-      <div class="hstat-sep"></div>
-      <div class="hstat"><div class="val">12</div><div class="lbl">Group Matches</div></div>
-      <div class="hstat-sep"></div>
-      <div class="hstat"><div class="val">14</div><div class="lbl">Total Matches</div></div>
-      <div class="hstat-sep"></div>
-      <div class="hstat"><div class="val">8</div><div class="lbl">Match Days</div></div>
+      <!-- ══ TEAMS ══ -->
+      <div class="section-wrap">
+        <div class="section-label">
+          <span class="badge badge-teams">Participating Teams</span>
+          <span class="line"></span>
+          <span class="note">6 PLAYERS PER TEAM</span>
+        </div>
+      </div>
+
+      <div class="teams-grid">
+        <!-- Golden Warriors -->
+        <div class="team-card team-golden">
+          <div class="team-hdr">
+            <span class="team-emoji">🛡️</span>
+            <span class="team-name">Golden Warriors</span>
+          </div>
+          <ul class="players-list">
+            <li class="player-item player-captain">
+              <span>👑</span> Tanzim <span class="captain-badge">CAPTAIN</span>
+            </li>
+            <li class="player-item"><span class="player-dot"></span> Shuvo</li>
+            <li class="player-item">
+              <span class="player-dot"></span> Md Nayeem
+            </li>
+            <li class="player-item"><span class="player-dot"></span> Fahim</li>
+            <li class="player-item"><span class="player-dot"></span> Saad</li>
+            <li class="player-item"><span class="player-dot"></span> Babu</li>
+          </ul>
+        </div>
+
+        <!-- Blazing Tigers -->
+        <div class="team-card team-blazing">
+          <div class="team-hdr">
+            <span class="team-emoji">🔥</span>
+            <span class="team-name">Blazing Tigers</span>
+          </div>
+          <ul class="players-list">
+            <li class="player-item player-captain">
+              <span>👑</span> Mahfuz Rahman Mishu
+              <span class="captain-badge">CAPTAIN</span>
+            </li>
+            <li class="player-item"><span class="player-dot"></span> Latif</li>
+            <li class="player-item"><span class="player-dot"></span> Tushar</li>
+            <li class="player-item"><span class="player-dot"></span> Shiraj</li>
+            <li class="player-item"><span class="player-dot"></span> Dedar</li>
+            <li class="player-item"><span class="player-dot"></span> Khalid</li>
+          </ul>
+        </div>
+
+        <!-- Thunder Strikers -->
+        <div class="team-card team-thunder">
+          <div class="team-hdr">
+            <span class="team-emoji">⚡</span>
+            <span class="team-name">Thunder Strikers</span>
+          </div>
+          <ul class="players-list">
+            <li class="player-item player-captain">
+              <span>👑</span> Meraj <span class="captain-badge">CAPTAIN</span>
+            </li>
+            <li class="player-item">
+              <span class="player-dot"></span> Mahafuz Islam
+            </li>
+            <li class="player-item"><span class="player-dot"></span> Shobuz</li>
+            <li class="player-item">
+              <span class="player-dot"></span> Asif Reza
+            </li>
+            <li class="player-item"><span class="player-dot"></span> Maruf</li>
+            <li class="player-item">
+              <span class="player-dot"></span> Oliullah
+            </li>
+          </ul>
+        </div>
+
+        <!-- The Sixers -->
+        <div class="team-card team-sixers">
+          <div class="team-hdr">
+            <span class="team-emoji">🏏</span>
+            <span class="team-name">The Sixers</span>
+          </div>
+          <ul class="players-list">
+            <li class="player-item player-captain">
+              <span>👑</span> Rafiq Rabbi
+              <span class="captain-badge">CAPTAIN</span>
+            </li>
+            <li class="player-item"><span class="player-dot"></span> Shohag</li>
+            <li class="player-item">
+              <span class="player-dot"></span> Montasir
+            </li>
+            <li class="player-item"><span class="player-dot"></span> Rouf</li>
+            <li class="player-item">
+              <span class="player-dot"></span> Mofidul
+            </li>
+            <li class="player-item">
+              <span class="player-dot"></span> Minhazur Rahman
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ══ GROUP STAGE ══ -->
+      <div class="schedule-section">
+        <div class="section-label">
+          <span class="badge badge-group">Group Stage — 12 Matches</span>
+          <span class="line"></span>
+          <span class="note">ALL 4 TEAMS PLAY EACH DAY</span>
+        </div>
+
+        <!-- Day 1 -->
+        <div class="day-card">
+          <div class="day-hdr">
+            <span class="day-lbl">Day 1</span>
+            <span class="day-note">2 matches</span>
+          </div>
+          <div class="match-row is-done">
+            <span class="match-num-lbl">M1</span>
+            <div class="team-side right">
+              <span class="result-flag win">WIN</span>
+              <span class="t-name">Golden Warriors</span>
+              <span class="t-emoji">🛡️</span>
+              <div class="color-pip" style="background: #f0c040"></div>
+            </div>
+            <span class="vs-pill">VS</span>
+            <div class="team-side">
+              <div class="color-pip" style="background: #ff6622"></div>
+              <span class="t-emoji">🔥</span>
+              <span class="t-name">Blazing Tigers</span>
+              <span class="result-flag loss">LOSS</span>
+            </div>
+            <span class="match-badge mb-a">M 1</span>
+          </div>
+          <div class="match-roster">
+            <table class="roster-table">
+              <thead>
+                <tr>
+                  <th style="color: #f0c040">🛡️ Golden Warriors</th>
+                  <th style="color: #ff6622">🔥 Blazing Tigers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cap">👑 Tanzim</td>
+                  <td class="cap">👑 Mahfuz Rahman Mishu</td>
+                </tr>
+                <tr>
+                  <td>Shuvo</td>
+                  <td>Latif</td>
+                </tr>
+                <tr>
+                  <td>Md Nayeem</td>
+                  <td>Tushar</td>
+                </tr>
+                <tr>
+                  <td>Fahim</td>
+                  <td>Shiraj</td>
+                </tr>
+                <tr>
+                  <td>Saad</td>
+                  <td>Dedar</td>
+                </tr>
+                <tr>
+                  <td>Babu</td>
+                  <td>Khalid</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="match-row is-done">
+            <span class="match-num-lbl">M2</span>
+            <div class="team-side right">
+              <span class="result-flag loss">LOSS</span>
+              <span class="t-name">Thunder Strikers</span>
+              <span class="t-emoji">⚡</span>
+              <div class="color-pip" style="background: #22aaff"></div>
+            </div>
+            <span class="vs-pill">VS</span>
+            <div class="team-side">
+              <div class="color-pip" style="background: #00e060"></div>
+              <span class="t-emoji">🏏</span>
+              <span class="t-name">The Sixers</span>
+              <span class="result-flag win">WIN</span>
+            </div>
+            <span class="match-badge mb-b">M 2</span>
+          </div>
+          <div class="match-roster">
+            <table class="roster-table">
+              <thead>
+                <tr>
+                  <th style="color: #22aaff">⚡ Thunder Strikers</th>
+                  <th style="color: #00e060">🏏 The Sixers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cap">👑 Meraj</td>
+                  <td class="cap">👑 Rafiq Rabbi</td>
+                </tr>
+                <tr>
+                  <td>Mahafuz Islam</td>
+                  <td>Shohag</td>
+                </tr>
+                <tr>
+                  <td>Shobuz</td>
+                  <td>Montasir</td>
+                </tr>
+                <tr>
+                  <td>Asif Reza</td>
+                  <td>Rouf</td>
+                </tr>
+                <tr>
+                  <td>Maruf</td>
+                  <td>Mofidul</td>
+                </tr>
+                <tr>
+                  <td>Oliullah</td>
+                  <td>Minhazur Rahman</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="day-card">
+          <div class="day-hdr">
+            <span class="day-lbl">Day 2</span>
+            <span class="day-note">2 matches</span>
+          </div>
+          <div class="match-row is-done">
+            <span class="match-num-lbl">M3</span>
+            <div class="team-side right">
+              <span class="result-flag loss">LOSS</span>
+              <span class="t-name">Golden Warriors</span>
+              <span class="t-emoji">🛡️</span>
+              <div class="color-pip" style="background: #f0c040"></div>
+            </div>
+            <span class="vs-pill">VS</span>
+            <div class="team-side">
+              <div class="color-pip" style="background: #22aaff"></div>
+              <span class="t-emoji">⚡</span>
+              <span class="t-name">Thunder Strikers</span>
+              <span class="result-flag win">WIN</span>
+            </div>
+            <span class="match-badge mb-a">M 3</span>
+          </div>
+          <div class="match-roster">
+            <table class="roster-table">
+              <thead>
+                <tr>
+                  <th style="color: #f0c040">🛡️ Golden Warriors</th>
+                  <th style="color: #22aaff">⚡ Thunder Strikers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cap">👑 Tanzim</td>
+                  <td class="cap">👑 Meraj</td>
+                </tr>
+                <tr>
+                  <td>Shuvo</td>
+                  <td>Mahafuz Islam</td>
+                </tr>
+                <tr>
+                  <td>Md Nayeem</td>
+                  <td>Shobuz</td>
+                </tr>
+                <tr>
+                  <td>Fahim</td>
+                  <td>Asif Reza</td>
+                </tr>
+                <tr>
+                  <td>Saad</td>
+                  <td>Maruf</td>
+                </tr>
+                <tr>
+                  <td>Babu</td>
+                  <td>Oliullah</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="match-row is-done">
+            <span class="match-num-lbl">M4</span>
+            <div class="team-side right">
+              <span class="result-flag win">WIN</span>
+              <span class="t-name">Blazing Tigers</span>
+              <span class="t-emoji">🔥</span>
+              <div class="color-pip" style="background: #ff6622"></div>
+            </div>
+            <span class="vs-pill">VS</span>
+            <div class="team-side">
+              <div class="color-pip" style="background: #00e060"></div>
+              <span class="t-emoji">🏏</span>
+              <span class="t-name">The Sixers</span>
+              <span class="result-flag loss">LOSS</span>
+            </div>
+            <span class="match-badge mb-b">M 4</span>
+          </div>
+          <div class="match-roster">
+            <table class="roster-table">
+              <thead>
+                <tr>
+                  <th style="color: #ff6622">🔥 Blazing Tigers</th>
+                  <th style="color: #00e060">🏏 The Sixers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cap">👑 Mahfuz Rahman Mishu</td>
+                  <td class="cap">👑 Rafiq Rabbi</td>
+                </tr>
+                <tr>
+                  <td>Latif</td>
+                  <td>Shohag</td>
+                </tr>
+                <tr>
+                  <td>Tushar</td>
+                  <td>Montasir</td>
+                </tr>
+                <tr>
+                  <td>Shiraj</td>
+                  <td>Rouf</td>
+                </tr>
+                <tr>
+                  <td>Dedar</td>
+                  <td>Mofidul</td>
+                </tr>
+                <tr>
+                  <td>Khalid</td>
+                  <td>Minhazur Rahman</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="day-card">
+          <div class="day-hdr">
+            <span class="day-lbl">Day 3</span>
+            <span class="day-note">2 matches</span>
+          </div>
+          <div class="match-row">
+            <span class="match-num-lbl">M5</span>
+            <div class="team-side right">
+              <span class="t-name">Golden Warriors</span>
+              <span class="t-emoji">🛡️</span>
+              <div class="color-pip" style="background: #f0c040"></div>
+            </div>
+            <span class="vs-pill">VS</span>
+            <div class="team-side">
+              <div class="color-pip" style="background: #00e060"></div>
+              <span class="t-emoji">🏏</span>
+              <span class="t-name">The Sixers</span>
+            </div>
+            <span class="match-badge mb-a">M 5</span>
+          </div>
+          <div class="match-roster">
+            <table class="roster-table">
+              <thead>
+                <tr>
+                  <th style="color: #f0c040">🛡️ Golden Warriors</th>
+                  <th style="color: #00e060">🏏 The Sixers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cap">👑 Tanzim</td>
+                  <td class="cap">👑 Rafiq Rabbi</td>
+                </tr>
+                <tr>
+                  <td>Shuvo</td>
+                  <td>Shohag</td>
+                </tr>
+                <tr>
+                  <td>Md Nayeem</td>
+                  <td>Montasir</td>
+                </tr>
+                <tr>
+                  <td>Fahim</td>
+                  <td>Rouf</td>
+                </tr>
+                <tr>
+                  <td>Saad</td>
+                  <td>Mofidul</td>
+                </tr>
+                <tr>
+                  <td>Babu</td>
+                  <td>Minhazur Rahman</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="match-row">
+            <span class="match-num-lbl">M6</span>
+            <div class="team-side right">
+              <span class="t-name">Blazing Tigers</span>
+              <span class="t-emoji">🔥</span>
+              <div class="color-pip" style="background: #ff6622"></div>
+            </div>
+            <span class="vs-pill">VS</span>
+            <div class="team-side">
+              <div class="color-pip" style="background: #22aaff"></div>
+              <span class="t-emoji">⚡</span>
+              <span class="t-name">Thunder Strikers</span>
+            </div>
+            <span class="match-badge mb-b">M 6</span>
+          </div>
+          <div class="match-roster">
+            <table class="roster-table">
+              <thead>
+                <tr>
+                  <th style="color: #ff6622">🔥 Blazing Tigers</th>
+                  <th style="color: #22aaff">⚡ Thunder Strikers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cap">👑 Mahfuz Rahman Mishu</td>
+                  <td class="cap">👑 Meraj</td>
+                </tr>
+                <tr>
+                  <td>Latif</td>
+                  <td>Mahafuz Islam</td>
+                </tr>
+                <tr>
+                  <td>Tushar</td>
+                  <td>Shobuz</td>
+                </tr>
+                <tr>
+                  <td>Shiraj</td>
+                  <td>Asif Reza</td>
+                </tr>
+                <tr>
+                  <td>Dedar</td>
+                  <td>Maruf</td>
+                </tr>
+                <tr>
+                  <td>Khalid</td>
+                  <td>Oliullah</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="day-card">
+          <div class="day-hdr">
+            <span class="day-lbl">Day 4</span>
+            <span class="day-note" style="color: #a060ff">Rematches begin</span>
+          </div>
+          <div class="match-row">
+            <span class="match-num-lbl">M7</span>
+            <div class="team-side right">
+              <span class="t-name">The Sixers</span>
+              <span class="t-emoji">🏏</span>
+              <div class="color-pip" style="background: #00e060"></div>
+            </div>
+            <span class="vs-pill">VS</span>
+            <div class="team-side">
+              <div class="color-pip" style="background: #22aaff"></div>
+              <span class="t-emoji">⚡</span>
+              <span class="t-name">Thunder Strikers</span>
+            </div>
+            <span class="match-badge mb-a">M 7</span>
+          </div>
+          <div class="match-roster">
+            <table class="roster-table">
+              <thead>
+                <tr>
+                  <th style="color: #00e060">🏏 The Sixers</th>
+                  <th style="color: #22aaff">⚡ Thunder Strikers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cap">👑 Rafiq Rabbi</td>
+                  <td class="cap">👑 Meraj</td>
+                </tr>
+                <tr>
+                  <td>Shohag</td>
+                  <td>Mahafuz Islam</td>
+                </tr>
+                <tr>
+                  <td>Montasir</td>
+                  <td>Shobuz</td>
+                </tr>
+                <tr>
+                  <td>Rouf</td>
+                  <td>Asif Reza</td>
+                </tr>
+                <tr>
+                  <td>Mofidul</td>
+                  <td>Maruf</td>
+                </tr>
+                <tr>
+                  <td>Minhazur Rahman</td>
+                  <td>Oliullah</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="match-row">
+            <span class="match-num-lbl">M8</span>
+            <div class="team-side right">
+              <span class="t-name">Blazing Tigers</span>
+              <span class="t-emoji">🔥</span>
+              <div class="color-pip" style="background: #ff6622"></div>
+            </div>
+            <span class="vs-pill">VS</span>
+            <div class="team-side">
+              <div class="color-pip" style="background: #f0c040"></div>
+              <span class="t-emoji">🛡️</span>
+              <span class="t-name">Golden Warriors</span>
+            </div>
+            <span class="match-badge mb-b">M 8</span>
+          </div>
+          <div class="match-roster">
+            <table class="roster-table">
+              <thead>
+                <tr>
+                  <th style="color: #ff6622">🔥 Blazing Tigers</th>
+                  <th style="color: #f0c040">🛡️ Golden Warriors</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cap">👑 Mahfuz Rahman Mishu</td>
+                  <td class="cap">👑 Tanzim</td>
+                </tr>
+                <tr>
+                  <td>Latif</td>
+                  <td>Shuvo</td>
+                </tr>
+                <tr>
+                  <td>Tushar</td>
+                  <td>Md Nayeem</td>
+                </tr>
+                <tr>
+                  <td>Shiraj</td>
+                  <td>Fahim</td>
+                </tr>
+                <tr>
+                  <td>Dedar</td>
+                  <td>Saad</td>
+                </tr>
+                <tr>
+                  <td>Khalid</td>
+                  <td>Babu</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div class="day-card">
+          <div class="day-hdr">
+            <span class="day-lbl">Day 5</span>
+            <span class="day-note">2 matches</span>
+          </div>
+          <div class="match-row">
+            <span class="match-num-lbl">M9</span>
+            <div class="team-side right">
+              <span class="t-name">The Sixers</span>
+              <span class="t-emoji">🏏</span>
+              <div class="color-pip" style="background: #00e060"></div>
+            </div>
+            <span class="vs-pill">VS</span>
+            <div class="team-side">
+              <div class="color-pip" style="background: #ff6622"></div>
+              <span class="t-emoji">🔥</span>
+              <span class="t-name">Blazing Tigers</span>
+            </div>
+            <span class="match-badge mb-a">M 9</span>
+          </div>
+          <div class="match-roster">
+            <table class="roster-table">
+              <thead>
+                <tr>
+                  <th style="color: #00e060">🏏 The Sixers</th>
+                  <th style="color: #ff6622">🔥 Blazing Tigers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cap">👑 Rafiq Rabbi</td>
+                  <td class="cap">👑 Mahfuz Rahman Mishu</td>
+                </tr>
+                <tr>
+                  <td>Shohag</td>
+                  <td>Latif</td>
+                </tr>
+                <tr>
+                  <td>Montasir</td>
+                  <td>Tushar</td>
+                </tr>
+                <tr>
+                  <td>Rouf</td>
+                  <td>Shiraj</td>
+                </tr>
+                <tr>
+                  <td>Mofidul</td>
+                  <td>Dedar</td>
+                </tr>
+                <tr>
+                  <td>Minhazur Rahman</td>
+                  <td>Khalid</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="match-row">
+            <span class="match-num-lbl">M10</span>
+            <div class="team-side right">
+              <span class="t-name">Thunder Strikers</span>
+              <span class="t-emoji">⚡</span>
+              <div class="color-pip" style="background: #22aaff"></div>
+            </div>
+            <span class="vs-pill">VS</span>
+            <div class="team-side">
+              <div class="color-pip" style="background: #f0c040"></div>
+              <span class="t-emoji">🛡️</span>
+              <span class="t-name">Golden Warriors</span>
+            </div>
+            <span class="match-badge mb-b">M 10</span>
+          </div>
+          <div class="match-roster">
+            <table class="roster-table">
+              <thead>
+                <tr>
+                  <th style="color: #22aaff">⚡ Thunder Strikers</th>
+                  <th style="color: #f0c040">🛡️ Golden Warriors</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cap">👑 Meraj</td>
+                  <td class="cap">👑 Tanzim</td>
+                </tr>
+                <tr>
+                  <td>Mahafuz Islam</td>
+                  <td>Shuvo</td>
+                </tr>
+                <tr>
+                  <td>Shobuz</td>
+                  <td>Md Nayeem</td>
+                </tr>
+                <tr>
+                  <td>Asif Reza</td>
+                  <td>Fahim</td>
+                </tr>
+                <tr>
+                  <td>Maruf</td>
+                  <td>Saad</td>
+                </tr>
+                <tr>
+                  <td>Oliullah</td>
+                  <td>Babu</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Day 6 -->
+        <div class="day-card">
+          <div class="day-hdr">
+            <span class="day-lbl">Day 6</span>
+            <span class="day-note" style="color: #f0c040"
+              >Last group stage day</span
+            >
+          </div>
+          <div class="match-row">
+            <span class="match-num-lbl">M11</span>
+            <div class="team-side right">
+              <span class="t-name">Thunder Strikers</span>
+              <span class="t-emoji">⚡</span>
+              <div class="color-pip" style="background: #22aaff"></div>
+            </div>
+            <span class="vs-pill">VS</span>
+            <div class="team-side">
+              <div class="color-pip" style="background: #ff6622"></div>
+              <span class="t-emoji">🔥</span>
+              <span class="t-name">Blazing Tigers</span>
+            </div>
+            <span class="match-badge mb-a">M 11</span>
+          </div>
+          <div class="match-roster">
+            <table class="roster-table">
+              <thead>
+                <tr>
+                  <th style="color: #22aaff">⚡ Thunder Strikers</th>
+                  <th style="color: #ff6622">🔥 Blazing Tigers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cap">👑 Meraj</td>
+                  <td class="cap">👑 Mahfuz Rahman Mishu</td>
+                </tr>
+                <tr>
+                  <td>Mahafuz Islam</td>
+                  <td>Latif</td>
+                </tr>
+                <tr>
+                  <td>Shobuz</td>
+                  <td>Tushar</td>
+                </tr>
+                <tr>
+                  <td>Asif Reza</td>
+                  <td>Shiraj</td>
+                </tr>
+                <tr>
+                  <td>Maruf</td>
+                  <td>Dedar</td>
+                </tr>
+                <tr>
+                  <td>Oliullah</td>
+                  <td>Khalid</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="match-row">
+            <span class="match-num-lbl">M12</span>
+            <div class="team-side right">
+              <span class="t-name">The Sixers</span>
+              <span class="t-emoji">🏏</span>
+              <div class="color-pip" style="background: #00e060"></div>
+            </div>
+            <span class="vs-pill">VS</span>
+            <div class="team-side">
+              <div class="color-pip" style="background: #f0c040"></div>
+              <span class="t-emoji">🛡️</span>
+              <span class="t-name">Golden Warriors</span>
+            </div>
+            <span class="match-badge mb-b">M 12</span>
+          </div>
+          <div class="match-roster">
+            <table class="roster-table">
+              <thead>
+                <tr>
+                  <th style="color: #00e060">🏏 The Sixers</th>
+                  <th style="color: #f0c040">🛡️ Golden Warriors</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cap">👑 Rafiq Rabbi</td>
+                  <td class="cap">👑 Tanzim</td>
+                </tr>
+                <tr>
+                  <td>Shohag</td>
+                  <td>Shuvo</td>
+                </tr>
+                <tr>
+                  <td>Montasir</td>
+                  <td>Md Nayeem</td>
+                </tr>
+                <tr>
+                  <td>Rouf</td>
+                  <td>Fahim</td>
+                </tr>
+                <tr>
+                  <td>Mofidul</td>
+                  <td>Saad</td>
+                </tr>
+                <tr>
+                  <td>Minhazur Rahman</td>
+                  <td>Babu</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ══ POINTS TABLE ══ -->
+        <div class="section-label" style="padding-top: 28px">
+          <span class="badge badge-teams">Points Table</span>
+          <span class="line"></span>
+          <span class="note">TOP 3 QUALIFY · LIVE STANDINGS</span>
+        </div>
+
+        <div class="pts-table-wrap">
+          <table class="pts-table">
+            <thead>
+              <tr>
+                <th class="pts-pos">#</th>
+                <th class="team-col">Team</th>
+                <th>P</th>
+                <th>W</th>
+                <th>L</th>
+                <th>T</th>
+                <th>NRR</th>
+                <th>Pts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="pts-row-sixers">
+                <td class="pts-pos">1</td>
+                <td>
+                  <div class="pts-team-cell">
+                    <div class="pip" style="background: #00e060"></div>
+                    <span class="emj">🏏</span
+                    ><span class="nm">The Sixers</span>
+                  </div>
+                </td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="pts-nrr pos">+1.33</td>
+                <td class="pts-val">2</td>
+              </tr>
+              <tr class="pts-row-thunder">
+                <td class="pts-pos">2</td>
+                <td>
+                  <div class="pts-team-cell">
+                    <div class="pip" style="background: #22aaff"></div>
+                    <span class="emj">⚡</span
+                    ><span class="nm">Thunder Strikers</span>
+                  </div>
+                </td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="pts-nrr">0.00</td>
+                <td class="pts-val">2</td>
+              </tr>
+              <tr class="pts-row-golden">
+                <td class="pts-pos">3</td>
+                <td>
+                  <div class="pts-team-cell">
+                    <div class="pip" style="background: #f0c040"></div>
+                    <span class="emj">🛡️</span
+                    ><span class="nm">Golden Warriors</span>
+                  </div>
+                </td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="pts-nrr neg">-0.67</td>
+                <td class="pts-val">2</td>
+              </tr>
+              <tr class="pts-row-blazing">
+                <td class="pts-pos">4</td>
+                <td>
+                  <div class="pts-team-cell">
+                    <div class="pip" style="background: #ff6622"></div>
+                    <span class="emj">🔥</span
+                    ><span class="nm">Blazing Tigers</span>
+                  </div>
+                </td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="pts-nrr neg">-0.67</td>
+                <td class="pts-val">2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ══ PLAYER PERFORMANCE ══ -->
+        <div class="section-label" style="padding-top: 28px">
+          <span class="badge badge-teams">Player Performance</span>
+          <span class="line"></span>
+          <span class="note">FOURS HIT · WICKETS TAKEN</span>
+        </div>
+
+        <div class="perf-grid">
+          <!-- Golden Warriors -->
+          <div class="perf-card">
+            <div class="perf-hdr" style="color: #f0c040">
+              🛡️ Golden Warriors
+            </div>
+            <table class="perf-table">
+              <thead>
+                <tr>
+                  <th class="pl-col">Player</th>
+                  <th>4s</th>
+                  <th>Wkts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="cap-row">
+                  <td class="pl">👑 Tanzim</td>
+                  <td class="num fours">0</td>
+                  <td class="num wkts">1</td>
+                </tr>
+                <tr>
+                  <td class="pl">Shuvo</td>
+                  <td class="num fours">9</td>
+                  <td class="num wkts">0</td>
+                </tr>
+                <tr>
+                  <td class="pl">Md Nayeem</td>
+                  <td class="num fours">5</td>
+                  <td class="num wkts">1</td>
+                </tr>
+                <tr>
+                  <td class="pl">Fahim</td>
+                  <td class="num fours">2</td>
+                  <td class="num wkts">0</td>
+                </tr>
+                <tr>
+                  <td class="pl">Saad</td>
+                  <td class="num fours">3</td>
+                  <td class="num wkts">2</td>
+                </tr>
+                <tr>
+                  <td class="pl">Babu</td>
+                  <td class="num fours">3</td>
+                  <td class="num wkts">3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Blazing Tigers -->
+          <div class="perf-card">
+            <div class="perf-hdr" style="color: #ff6622">🔥 Blazing Tigers</div>
+            <table class="perf-table">
+              <thead>
+                <tr>
+                  <th class="pl-col">Player</th>
+                  <th>4s</th>
+                  <th>Wkts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="cap-row">
+                  <td class="pl">👑 Mahfuz Rahman Mishu</td>
+                  <td class="num fours">1</td>
+                  <td class="num wkts">3</td>
+                </tr>
+                <tr>
+                  <td class="pl">Latif</td>
+                  <td class="num fours">3</td>
+                  <td class="num wkts">0</td>
+                </tr>
+                <tr>
+                  <td class="pl">Tushar</td>
+                  <td class="num fours">4</td>
+                  <td class="num wkts">1</td>
+                </tr>
+                <tr>
+                  <td class="pl">Shiraj</td>
+                  <td class="num fours">1</td>
+                  <td class="num wkts">1</td>
+                </tr>
+                <tr>
+                  <td class="pl">Dedar</td>
+                  <td class="num fours">1</td>
+                  <td class="num wkts">1</td>
+                </tr>
+                <tr>
+                  <td class="pl">Khalid</td>
+                  <td class="num fours">6</td>
+                  <td class="num wkts">2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Thunder Strikers -->
+          <div class="perf-card">
+            <div class="perf-hdr" style="color: #22aaff">
+              ⚡ Thunder Strikers
+            </div>
+            <table class="perf-table">
+              <thead>
+                <tr>
+                  <th class="pl-col">Player</th>
+                  <th>4s</th>
+                  <th>Wkts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="cap-row">
+                  <td class="pl">👑 Meraj</td>
+                  <td class="num fours">5</td>
+                  <td class="num wkts">2</td>
+                </tr>
+                <tr>
+                  <td class="pl">Mahafuz Islam</td>
+                  <td class="num fours">3</td>
+                  <td class="num wkts">2</td>
+                </tr>
+                <tr>
+                  <td class="pl">Shobuz</td>
+                  <td class="num fours">2</td>
+                  <td class="num wkts">0</td>
+                </tr>
+                <tr>
+                  <td class="pl">Asif Reza</td>
+                  <td class="num fours">4</td>
+                  <td class="num wkts">2</td>
+                </tr>
+                <tr>
+                  <td class="pl">Maruf</td>
+                  <td class="num fours">1</td>
+                  <td class="num wkts">1</td>
+                </tr>
+                <tr>
+                  <td class="pl">Oliullah</td>
+                  <td class="num fours">4</td>
+                  <td class="num wkts">2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- The Sixers -->
+          <div class="perf-card">
+            <div class="perf-hdr" style="color: #00e060">🏏 The Sixers</div>
+            <table class="perf-table">
+              <thead>
+                <tr>
+                  <th class="pl-col">Player</th>
+                  <th>4s</th>
+                  <th>Wkts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="cap-row">
+                  <td class="pl">👑 Rafiq Rabbi</td>
+                  <td class="num fours">8</td>
+                  <td class="num wkts">2</td>
+                </tr>
+                <tr>
+                  <td class="pl">Shohag</td>
+                  <td class="num fours">4</td>
+                  <td class="num wkts">0</td>
+                </tr>
+                <tr>
+                  <td class="pl">Montasir</td>
+                  <td class="num fours">0</td>
+                  <td class="num wkts">2</td>
+                </tr>
+                <tr>
+                  <td class="pl">Rouf</td>
+                  <td class="num fours">3</td>
+                  <td class="num wkts">0</td>
+                </tr>
+                <tr>
+                  <td class="pl">Mofidul</td>
+                  <td class="num fours">0</td>
+                  <td class="num wkts">2</td>
+                </tr>
+                <tr>
+                  <td class="pl">Minhazur Rahman</td>
+                  <td class="num fours">1</td>
+                  <td class="num wkts">1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ══ SEMI FINALS ══ -->
+        <div class="section-label" style="padding-top: 28px">
+          <span class="badge badge-semi">Semi Final</span>
+          <span class="line"></span>
+          <span class="note">TOP 3 QUALIFY · 1ST PLACE DIRECT TO FINAL</span>
+        </div>
+
+        <div class="day-card" style="border-color: #221800">
+          <div class="day-hdr" style="background: rgba(255, 160, 0, 0.04)">
+            <span class="day-lbl" style="color: #ffa000"
+              >Day 7 — Semi Final</span
+            >
+            <span class="day-note">1 match</span>
+          </div>
+          <div class="match-row is-semi" style="padding: 16px 18px">
+            <span class="match-num-lbl" style="color: #ffa000">SF</span>
+            <div class="team-side right">
+              <span class="t-name" style="color: #c0b090; font-size: 14px"
+                >2nd Place</span
+              >
+              <div
+                class="color-pip"
+                style="background: #ffa000; opacity: 0.5"
+              ></div>
+            </div>
+            <span
+              class="vs-pill"
+              style="
+                border-color: rgba(255, 160, 0, 0.3);
+                color: #ffa000;
+                font-size: 12px;
+                padding: 4px 12px;
+              "
+              >VS</span
+            >
+            <div class="team-side">
+              <div
+                class="color-pip"
+                style="background: #ffa000; opacity: 0.5"
+              ></div>
+              <span class="t-name" style="color: #c0b090; font-size: 14px"
+                >3rd Place</span
+              >
+            </div>
+            <span
+              class="match-badge"
+              style="
+                background: rgba(255, 160, 0, 0.1);
+                color: #ffa000;
+                border: 1px solid rgba(255, 160, 0, 0.3);
+              "
+              >2nd v 3rd</span
+            >
+          </div>
+        </div>
+
+        <!-- 1st place bye note -->
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            margin-bottom: 2px;
+            background: rgba(240, 192, 64, 0.03);
+            border: 1px solid rgba(240, 192, 64, 0.12);
+            border-radius: 10px;
+          "
+        >
+          <span style="font-size: 16px">🥇</span>
+          <span style="font-size: 12px; color: #a08040"
+            ><strong style="color: #c0a030">1st Place</strong> — Direct entry to
+            Grand Final (bye)</span
+          >
+        </div>
+
+        <!-- ══ GRAND FINAL ══ -->
+        <div class="section-label" style="padding-top: 24px">
+          <span class="badge badge-final">🏆 Grand Final</span>
+          <span class="line"></span>
+          <span class="note">WINNER TAKES ALL</span>
+        </div>
+
+        <div
+          class="day-card"
+          style="
+            border-color: #2a2000;
+            box-shadow: 0 0 24px rgba(240, 192, 64, 0.07);
+          "
+        >
+          <div class="day-hdr" style="background: rgba(240, 192, 64, 0.04)">
+            <span class="day-lbl" style="color: #f0c040"
+              >Day 8 — 🏆 Grand Final</span
+            >
+            <span class="day-note" style="color: #806020"
+              >Championship Match</span
+            >
+          </div>
+          <div class="match-row is-final">
+            <span class="match-num-lbl" style="color: #f0c040">GF</span>
+            <div class="team-side right">
+              <span class="t-name">1st Place</span>
+              <div
+                class="color-pip"
+                style="background: linear-gradient(180deg, #f0c040, #ff8800)"
+              ></div>
+            </div>
+            <span class="vs-pill">VS</span>
+            <div class="team-side">
+              <div
+                class="color-pip"
+                style="background: linear-gradient(180deg, #f0c040, #ff8800)"
+              ></div>
+              <span class="t-name">SF Winner</span>
+            </div>
+            <span
+              class="match-badge"
+              style="
+                background: rgba(240, 192, 64, 0.14);
+                color: #f0c040;
+                border: 1px solid rgba(240, 192, 64, 0.38);
+              "
+              >FINAL</span
+            >
+          </div>
+        </div>
+
+        <!-- Points rule strip -->
+        <div
+          style="
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+          "
+        >
+          <span
+            style="
+              font-size: 11px;
+              color: #5050a0;
+              letter-spacing: 1px;
+              margin-right: 4px;
+              font-family: &quot;Oswald&quot;, sans-serif;
+              text-transform: uppercase;
+            "
+            >Points:</span
+          >
+          <span style="font-size: 12px; color: #80e880">🟢 Win = 2pts</span>
+          <span style="font-size: 12px; color: #808080">·</span>
+          <span style="font-size: 12px; color: #e88080">🔴 Loss = 0pts</span>
+          <span style="font-size: 12px; color: #808080">·</span>
+          <span style="font-size: 12px; color: #e8e080">🟡 Tie = 1pt each</span>
+          <span style="font-size: 12px; color: #808080">·</span>
+          <span style="font-size: 12px; color: #9080c0"
+            >⚡ NRR breaks ties</span
+          >
+          <span style="font-size: 12px; color: #808080">·</span>
+          <span style="font-size: 12px; color: #9080c0"
+            >🏆 Top 3 → Playoffs · 1st gets bye</span
+          >
+        </div>
+      </div>
+
+      <!-- ══ BOTTOM STRIP ══ -->
+      <div class="bottom-strip">
+        <div class="bstat">
+          <div class="val">12</div>
+          <div class="lbl">Group Matches</div>
+        </div>
+        <div class="battle-txt">
+          🏏 LET THE BATTLE BEGIN 🏏<small>May the best team win!</small>
+        </div>
+        <div class="bstat">
+          <div class="val">14</div>
+          <div class="lbl">Total Matches</div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <!-- ══ TEAMS ══ -->
-  <div class="section-wrap">
-    <div class="section-label">
-      <span class="badge badge-teams">Participating Teams</span>
-      <span class="line"></span>
-      <span class="note">6 PLAYERS PER TEAM</span>
-    </div>
-  </div>
-
-  <div class="teams-grid">
-
-    <!-- Golden Warriors -->
-    <div class="team-card team-golden">
-      <div class="team-hdr">
-        <span class="team-emoji">🛡️</span>
-        <span class="team-name">Golden Warriors</span>
-      </div>
-      <ul class="players-list">
-        <li class="player-item player-captain"><span>👑</span> Tanzim <span class="captain-badge">CAPTAIN</span></li>
-        <li class="player-item"><span class="player-dot"></span> Shuvo</li>
-        <li class="player-item"><span class="player-dot"></span> Md Nayeem</li>
-        <li class="player-item"><span class="player-dot"></span> Fahim</li>
-        <li class="player-item"><span class="player-dot"></span> Saad</li>
-        <li class="player-item"><span class="player-dot"></span> Babu</li>
-      </ul>
-    </div>
-
-    <!-- Blazing Tigers -->
-    <div class="team-card team-blazing">
-      <div class="team-hdr">
-        <span class="team-emoji">🔥</span>
-        <span class="team-name">Blazing Tigers</span>
-      </div>
-      <ul class="players-list">
-        <li class="player-item player-captain"><span>👑</span> Mahfuz Rahman Mishu <span class="captain-badge">CAPTAIN</span></li>
-        <li class="player-item"><span class="player-dot"></span> Latif</li>
-        <li class="player-item"><span class="player-dot"></span> Tushar</li>
-        <li class="player-item"><span class="player-dot"></span> Shiraj</li>
-        <li class="player-item"><span class="player-dot"></span> Dedar</li>
-        <li class="player-item"><span class="player-dot"></span> Khalid</li>
-      </ul>
-    </div>
-
-    <!-- Thunder Strikers -->
-    <div class="team-card team-thunder">
-      <div class="team-hdr">
-        <span class="team-emoji">⚡</span>
-        <span class="team-name">Thunder Strikers</span>
-      </div>
-      <ul class="players-list">
-        <li class="player-item player-captain"><span>👑</span> Meraj <span class="captain-badge">CAPTAIN</span></li>
-        <li class="player-item"><span class="player-dot"></span> Mahafuz Islam</li>
-        <li class="player-item"><span class="player-dot"></span> Shobuz</li>
-        <li class="player-item"><span class="player-dot"></span> Asif Reza</li>
-        <li class="player-item"><span class="player-dot"></span> Maruf</li>
-        <li class="player-item"><span class="player-dot"></span> Oliullah</li>
-      </ul>
-    </div>
-
-    <!-- The Sixers -->
-    <div class="team-card team-sixers">
-      <div class="team-hdr">
-        <span class="team-emoji">🏏</span>
-        <span class="team-name">The Sixers</span>
-      </div>
-      <ul class="players-list">
-        <li class="player-item player-captain"><span>👑</span> Rafiq Rabbi <span class="captain-badge">CAPTAIN</span></li>
-        <li class="player-item"><span class="player-dot"></span> Shohag</li>
-        <li class="player-item"><span class="player-dot"></span> Montasir</li>
-        <li class="player-item"><span class="player-dot"></span> Rouf</li>
-        <li class="player-item"><span class="player-dot"></span> Mofidul</li>
-        <li class="player-item"><span class="player-dot"></span> Minhazur Rahman</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- ══ GROUP STAGE ══ -->
-  <div class="schedule-section">
-    <div class="section-label">
-      <span class="badge badge-group">Group Stage — 12 Matches</span>
-      <span class="line"></span>
-      <span class="note">ALL 4 TEAMS PLAY EACH DAY</span>
-    </div>
-
-    <!-- Day 1 -->
-    <div class="day-card">
-      <div class="day-hdr">
-        <span class="day-lbl">Day 1</span>
-        <span class="day-note">2 matches</span>
-      </div>
-      <div class="match-row is-done">
-        <span class="match-num-lbl">M1</span>
-        <div class="team-side right">
-          <span class="result-flag win">WIN</span>
-          <span class="t-name">Golden Warriors</span>
-          <span class="t-emoji">🛡️</span>
-          <div class="color-pip" style="background:#f0c040;"></div>
-        </div>
-        <span class="vs-pill">VS</span>
-        <div class="team-side">
-          <div class="color-pip" style="background:#ff6622;"></div>
-          <span class="t-emoji">🔥</span>
-          <span class="t-name">Blazing Tigers</span>
-          <span class="result-flag loss">LOSS</span>
-        </div>
-        <span class="match-badge mb-a">M 1</span>
-      </div>
-      <div class="match-roster">
-        <table class="roster-table">
-          <thead><tr>
-            <th style="color:#f0c040;">🛡️ Golden Warriors</th>
-            <th style="color:#ff6622;">🔥 Blazing Tigers</th>
-          </tr></thead>
-          <tbody>
-            <tr><td class="cap">👑 Tanzim</td><td class="cap">👑 Mahfuz Rahman Mishu</td></tr>
-            <tr><td>Shuvo</td><td>Latif</td></tr>
-            <tr><td>Md Nayeem</td><td>Tushar</td></tr>
-            <tr><td>Fahim</td><td>Shiraj</td></tr>
-            <tr><td>Saad</td><td>Dedar</td></tr>
-            <tr><td>Babu</td><td>Khalid</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="match-row is-done">
-        <span class="match-num-lbl">M2</span>
-        <div class="team-side right">
-          <span class="result-flag loss">LOSS</span>
-          <span class="t-name">Thunder Strikers</span>
-          <span class="t-emoji">⚡</span>
-          <div class="color-pip" style="background:#22aaff;"></div>
-        </div>
-        <span class="vs-pill">VS</span>
-        <div class="team-side">
-          <div class="color-pip" style="background:#00e060;"></div>
-          <span class="t-emoji">🏏</span>
-          <span class="t-name">The Sixers</span>
-          <span class="result-flag win">WIN</span>
-        </div>
-        <span class="match-badge mb-b">M 2</span>
-      </div>
-      <div class="match-roster">
-        <table class="roster-table">
-          <thead><tr>
-            <th style="color:#22aaff;">⚡ Thunder Strikers</th>
-            <th style="color:#00e060;">🏏 The Sixers</th>
-          </tr></thead>
-          <tbody>
-            <tr><td class="cap">👑 Meraj</td><td class="cap">👑 Rafiq Rabbi</td></tr>
-            <tr><td>Mahafuz Islam</td><td>Shohag</td></tr>
-            <tr><td>Shobuz</td><td>Montasir</td></tr>
-            <tr><td>Asif Reza</td><td>Rouf</td></tr>
-            <tr><td>Maruf</td><td>Mofidul</td></tr>
-            <tr><td>Oliullah</td><td>Minhazur Rahman</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Day 2 -->
-    <div class="day-card">
-      <div class="day-hdr">
-        <span class="day-lbl">Day 2</span>
-        <span class="day-note">2 matches</span>
-      </div>
-      <div class="match-row">
-        <span class="match-num-lbl">M3</span>
-        <div class="team-side right">
-          <span class="t-name">Golden Warriors</span>
-          <span class="t-emoji">🛡️</span>
-          <div class="color-pip" style="background:#f0c040;"></div>
-        </div>
-        <span class="vs-pill">VS</span>
-        <div class="team-side">
-          <div class="color-pip" style="background:#22aaff;"></div>
-          <span class="t-emoji">⚡</span>
-          <span class="t-name">Thunder Strikers</span>
-        </div>
-        <span class="match-badge mb-a">M 3</span>
-      </div>
-      <div class="match-roster">
-        <table class="roster-table">
-          <thead><tr>
-            <th style="color:#f0c040;">🛡️ Golden Warriors</th>
-            <th style="color:#22aaff;">⚡ Thunder Strikers</th>
-          </tr></thead>
-          <tbody>
-            <tr><td class="cap">👑 Tanzim</td><td class="cap">👑 Meraj</td></tr>
-            <tr><td>Shuvo</td><td>Mahafuz Islam</td></tr>
-            <tr><td>Md Nayeem</td><td>Shobuz</td></tr>
-            <tr><td>Fahim</td><td>Asif Reza</td></tr>
-            <tr><td>Saad</td><td>Maruf</td></tr>
-            <tr><td>Babu</td><td>Oliullah</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="match-row">
-        <span class="match-num-lbl">M4</span>
-        <div class="team-side right">
-          <span class="t-name">Blazing Tigers</span>
-          <span class="t-emoji">🔥</span>
-          <div class="color-pip" style="background:#ff6622;"></div>
-        </div>
-        <span class="vs-pill">VS</span>
-        <div class="team-side">
-          <div class="color-pip" style="background:#00e060;"></div>
-          <span class="t-emoji">🏏</span>
-          <span class="t-name">The Sixers</span>
-        </div>
-        <span class="match-badge mb-b">M 4</span>
-      </div>
-      <div class="match-roster">
-        <table class="roster-table">
-          <thead><tr>
-            <th style="color:#ff6622;">🔥 Blazing Tigers</th>
-            <th style="color:#00e060;">🏏 The Sixers</th>
-          </tr></thead>
-          <tbody>
-            <tr><td class="cap">👑 Mahfuz Rahman Mishu</td><td class="cap">👑 Rafiq Rabbi</td></tr>
-            <tr><td>Latif</td><td>Shohag</td></tr>
-            <tr><td>Tushar</td><td>Montasir</td></tr>
-            <tr><td>Shiraj</td><td>Rouf</td></tr>
-            <tr><td>Dedar</td><td>Mofidul</td></tr>
-            <tr><td>Khalid</td><td>Minhazur Rahman</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Day 3 -->
-    <div class="day-card">
-      <div class="day-hdr">
-        <span class="day-lbl">Day 3</span>
-        <span class="day-note">2 matches</span>
-      </div>
-      <div class="match-row">
-        <span class="match-num-lbl">M5</span>
-        <div class="team-side right">
-          <span class="t-name">Golden Warriors</span>
-          <span class="t-emoji">🛡️</span>
-          <div class="color-pip" style="background:#f0c040;"></div>
-        </div>
-        <span class="vs-pill">VS</span>
-        <div class="team-side">
-          <div class="color-pip" style="background:#00e060;"></div>
-          <span class="t-emoji">🏏</span>
-          <span class="t-name">The Sixers</span>
-        </div>
-        <span class="match-badge mb-a">M 5</span>
-      </div>
-      <div class="match-roster">
-        <table class="roster-table">
-          <thead><tr>
-            <th style="color:#f0c040;">🛡️ Golden Warriors</th>
-            <th style="color:#00e060;">🏏 The Sixers</th>
-          </tr></thead>
-          <tbody>
-            <tr><td class="cap">👑 Tanzim</td><td class="cap">👑 Rafiq Rabbi</td></tr>
-            <tr><td>Shuvo</td><td>Shohag</td></tr>
-            <tr><td>Md Nayeem</td><td>Montasir</td></tr>
-            <tr><td>Fahim</td><td>Rouf</td></tr>
-            <tr><td>Saad</td><td>Mofidul</td></tr>
-            <tr><td>Babu</td><td>Minhazur Rahman</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="match-row">
-        <span class="match-num-lbl">M6</span>
-        <div class="team-side right">
-          <span class="t-name">Blazing Tigers</span>
-          <span class="t-emoji">🔥</span>
-          <div class="color-pip" style="background:#ff6622;"></div>
-        </div>
-        <span class="vs-pill">VS</span>
-        <div class="team-side">
-          <div class="color-pip" style="background:#22aaff;"></div>
-          <span class="t-emoji">⚡</span>
-          <span class="t-name">Thunder Strikers</span>
-        </div>
-        <span class="match-badge mb-b">M 6</span>
-      </div>
-      <div class="match-roster">
-        <table class="roster-table">
-          <thead><tr>
-            <th style="color:#ff6622;">🔥 Blazing Tigers</th>
-            <th style="color:#22aaff;">⚡ Thunder Strikers</th>
-          </tr></thead>
-          <tbody>
-            <tr><td class="cap">👑 Mahfuz Rahman Mishu</td><td class="cap">👑 Meraj</td></tr>
-            <tr><td>Latif</td><td>Mahafuz Islam</td></tr>
-            <tr><td>Tushar</td><td>Shobuz</td></tr>
-            <tr><td>Shiraj</td><td>Asif Reza</td></tr>
-            <tr><td>Dedar</td><td>Maruf</td></tr>
-            <tr><td>Khalid</td><td>Oliullah</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Day 4 -->
-    <div class="day-card">
-      <div class="day-hdr">
-        <span class="day-lbl">Day 4</span>
-        <span class="day-note" style="color:#a060ff;">Rematches begin</span>
-      </div>
-      <div class="match-row">
-        <span class="match-num-lbl">M7</span>
-        <div class="team-side right">
-          <span class="t-name">The Sixers</span>
-          <span class="t-emoji">🏏</span>
-          <div class="color-pip" style="background:#00e060;"></div>
-        </div>
-        <span class="vs-pill">VS</span>
-        <div class="team-side">
-          <div class="color-pip" style="background:#22aaff;"></div>
-          <span class="t-emoji">⚡</span>
-          <span class="t-name">Thunder Strikers</span>
-        </div>
-        <span class="match-badge mb-a">M 7</span>
-      </div>
-      <div class="match-roster">
-        <table class="roster-table">
-          <thead><tr>
-            <th style="color:#00e060;">🏏 The Sixers</th>
-            <th style="color:#22aaff;">⚡ Thunder Strikers</th>
-          </tr></thead>
-          <tbody>
-            <tr><td class="cap">👑 Rafiq Rabbi</td><td class="cap">👑 Meraj</td></tr>
-            <tr><td>Shohag</td><td>Mahafuz Islam</td></tr>
-            <tr><td>Montasir</td><td>Shobuz</td></tr>
-            <tr><td>Rouf</td><td>Asif Reza</td></tr>
-            <tr><td>Mofidul</td><td>Maruf</td></tr>
-            <tr><td>Minhazur Rahman</td><td>Oliullah</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="match-row">
-        <span class="match-num-lbl">M8</span>
-        <div class="team-side right">
-          <span class="t-name">Blazing Tigers</span>
-          <span class="t-emoji">🔥</span>
-          <div class="color-pip" style="background:#ff6622;"></div>
-        </div>
-        <span class="vs-pill">VS</span>
-        <div class="team-side">
-          <div class="color-pip" style="background:#f0c040;"></div>
-          <span class="t-emoji">🛡️</span>
-          <span class="t-name">Golden Warriors</span>
-        </div>
-        <span class="match-badge mb-b">M 8</span>
-      </div>
-      <div class="match-roster">
-        <table class="roster-table">
-          <thead><tr>
-            <th style="color:#ff6622;">🔥 Blazing Tigers</th>
-            <th style="color:#f0c040;">🛡️ Golden Warriors</th>
-          </tr></thead>
-          <tbody>
-            <tr><td class="cap">👑 Mahfuz Rahman Mishu</td><td class="cap">👑 Tanzim</td></tr>
-            <tr><td>Latif</td><td>Shuvo</td></tr>
-            <tr><td>Tushar</td><td>Md Nayeem</td></tr>
-            <tr><td>Shiraj</td><td>Fahim</td></tr>
-            <tr><td>Dedar</td><td>Saad</td></tr>
-            <tr><td>Khalid</td><td>Babu</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Day 5 -->
-    <div class="day-card">
-      <div class="day-hdr">
-        <span class="day-lbl">Day 5</span>
-        <span class="day-note">2 matches</span>
-      </div>
-      <div class="match-row">
-        <span class="match-num-lbl">M9</span>
-        <div class="team-side right">
-          <span class="t-name">The Sixers</span>
-          <span class="t-emoji">🏏</span>
-          <div class="color-pip" style="background:#00e060;"></div>
-        </div>
-        <span class="vs-pill">VS</span>
-        <div class="team-side">
-          <div class="color-pip" style="background:#ff6622;"></div>
-          <span class="t-emoji">🔥</span>
-          <span class="t-name">Blazing Tigers</span>
-        </div>
-        <span class="match-badge mb-a">M 9</span>
-      </div>
-      <div class="match-roster">
-        <table class="roster-table">
-          <thead><tr>
-            <th style="color:#00e060;">🏏 The Sixers</th>
-            <th style="color:#ff6622;">🔥 Blazing Tigers</th>
-          </tr></thead>
-          <tbody>
-            <tr><td class="cap">👑 Rafiq Rabbi</td><td class="cap">👑 Mahfuz Rahman Mishu</td></tr>
-            <tr><td>Shohag</td><td>Latif</td></tr>
-            <tr><td>Montasir</td><td>Tushar</td></tr>
-            <tr><td>Rouf</td><td>Shiraj</td></tr>
-            <tr><td>Mofidul</td><td>Dedar</td></tr>
-            <tr><td>Minhazur Rahman</td><td>Khalid</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="match-row">
-        <span class="match-num-lbl">M10</span>
-        <div class="team-side right">
-          <span class="t-name">Thunder Strikers</span>
-          <span class="t-emoji">⚡</span>
-          <div class="color-pip" style="background:#22aaff;"></div>
-        </div>
-        <span class="vs-pill">VS</span>
-        <div class="team-side">
-          <div class="color-pip" style="background:#f0c040;"></div>
-          <span class="t-emoji">🛡️</span>
-          <span class="t-name">Golden Warriors</span>
-        </div>
-        <span class="match-badge mb-b">M 10</span>
-      </div>
-      <div class="match-roster">
-        <table class="roster-table">
-          <thead><tr>
-            <th style="color:#22aaff;">⚡ Thunder Strikers</th>
-            <th style="color:#f0c040;">🛡️ Golden Warriors</th>
-          </tr></thead>
-          <tbody>
-            <tr><td class="cap">👑 Meraj</td><td class="cap">👑 Tanzim</td></tr>
-            <tr><td>Mahafuz Islam</td><td>Shuvo</td></tr>
-            <tr><td>Shobuz</td><td>Md Nayeem</td></tr>
-            <tr><td>Asif Reza</td><td>Fahim</td></tr>
-            <tr><td>Maruf</td><td>Saad</td></tr>
-            <tr><td>Oliullah</td><td>Babu</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Day 6 -->
-    <div class="day-card">
-      <div class="day-hdr">
-        <span class="day-lbl">Day 6</span>
-        <span class="day-note" style="color:#f0c040;">Last group stage day</span>
-      </div>
-      <div class="match-row">
-        <span class="match-num-lbl">M11</span>
-        <div class="team-side right">
-          <span class="t-name">Thunder Strikers</span>
-          <span class="t-emoji">⚡</span>
-          <div class="color-pip" style="background:#22aaff;"></div>
-        </div>
-        <span class="vs-pill">VS</span>
-        <div class="team-side">
-          <div class="color-pip" style="background:#ff6622;"></div>
-          <span class="t-emoji">🔥</span>
-          <span class="t-name">Blazing Tigers</span>
-        </div>
-        <span class="match-badge mb-a">M 11</span>
-      </div>
-      <div class="match-roster">
-        <table class="roster-table">
-          <thead><tr>
-            <th style="color:#22aaff;">⚡ Thunder Strikers</th>
-            <th style="color:#ff6622;">🔥 Blazing Tigers</th>
-          </tr></thead>
-          <tbody>
-            <tr><td class="cap">👑 Meraj</td><td class="cap">👑 Mahfuz Rahman Mishu</td></tr>
-            <tr><td>Mahafuz Islam</td><td>Latif</td></tr>
-            <tr><td>Shobuz</td><td>Tushar</td></tr>
-            <tr><td>Asif Reza</td><td>Shiraj</td></tr>
-            <tr><td>Maruf</td><td>Dedar</td></tr>
-            <tr><td>Oliullah</td><td>Khalid</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="match-row">
-        <span class="match-num-lbl">M12</span>
-        <div class="team-side right">
-          <span class="t-name">The Sixers</span>
-          <span class="t-emoji">🏏</span>
-          <div class="color-pip" style="background:#00e060;"></div>
-        </div>
-        <span class="vs-pill">VS</span>
-        <div class="team-side">
-          <div class="color-pip" style="background:#f0c040;"></div>
-          <span class="t-emoji">🛡️</span>
-          <span class="t-name">Golden Warriors</span>
-        </div>
-        <span class="match-badge mb-b">M 12</span>
-      </div>
-      <div class="match-roster">
-        <table class="roster-table">
-          <thead><tr>
-            <th style="color:#00e060;">🏏 The Sixers</th>
-            <th style="color:#f0c040;">🛡️ Golden Warriors</th>
-          </tr></thead>
-          <tbody>
-            <tr><td class="cap">👑 Rafiq Rabbi</td><td class="cap">👑 Tanzim</td></tr>
-            <tr><td>Shohag</td><td>Shuvo</td></tr>
-            <tr><td>Montasir</td><td>Md Nayeem</td></tr>
-            <tr><td>Rouf</td><td>Fahim</td></tr>
-            <tr><td>Mofidul</td><td>Saad</td></tr>
-            <tr><td>Minhazur Rahman</td><td>Babu</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ══ POINTS TABLE ══ -->
-    <div class="section-label" style="padding-top:28px;">
-      <span class="badge badge-teams">Points Table</span>
-      <span class="line"></span>
-      <span class="note">TOP 3 QUALIFY · LIVE STANDINGS</span>
-    </div>
-
-    <div class="pts-table-wrap">
-      <table class="pts-table">
-        <thead>
-          <tr>
-            <th class="pts-pos">#</th>
-            <th class="team-col">Team</th>
-            <th>P</th>
-            <th>W</th>
-            <th>L</th>
-            <th>T</th>
-            <th>NRR</th>
-            <th>Pts</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="pts-row-sixers">
-            <td class="pts-pos">1</td>
-            <td><div class="pts-team-cell"><div class="pip" style="background:#00e060;"></div><span class="emj">🏏</span><span class="nm">The Sixers</span></div></td>
-            <td>1</td><td>1</td><td>0</td><td>0</td>
-            <td class="pts-nrr pos">+4.00</td>
-            <td class="pts-val">2</td>
-          </tr>
-          <tr class="pts-row-golden">
-            <td class="pts-pos">2</td>
-            <td><div class="pts-team-cell"><div class="pip" style="background:#f0c040;"></div><span class="emj">🛡️</span><span class="nm">Golden Warriors</span></div></td>
-            <td>1</td><td>1</td><td>0</td><td>0</td>
-            <td class="pts-nrr pos">+2.67</td>
-            <td class="pts-val">2</td>
-          </tr>
-          <tr class="pts-row-blazing">
-            <td class="pts-pos">3</td>
-            <td><div class="pts-team-cell"><div class="pip" style="background:#ff6622;"></div><span class="emj">🔥</span><span class="nm">Blazing Tigers</span></div></td>
-            <td>1</td><td>0</td><td>1</td><td>0</td>
-            <td class="pts-nrr neg">-2.67</td>
-            <td class="pts-val">0</td>
-          </tr>
-          <tr class="pts-row-thunder">
-            <td class="pts-pos">4</td>
-            <td><div class="pts-team-cell"><div class="pip" style="background:#22aaff;"></div><span class="emj">⚡</span><span class="nm">Thunder Strikers</span></div></td>
-            <td>1</td><td>0</td><td>1</td><td>0</td>
-            <td class="pts-nrr neg">-4.00</td>
-            <td class="pts-val">0</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- ══ PLAYER PERFORMANCE ══ -->
-    <div class="section-label" style="padding-top:28px;">
-      <span class="badge badge-teams">Player Performance</span>
-      <span class="line"></span>
-      <span class="note">FOURS HIT · WICKETS TAKEN</span>
-    </div>
-
-    <div class="perf-grid">
-
-      <!-- Golden Warriors -->
-      <div class="perf-card">
-        <div class="perf-hdr" style="color:#f0c040;">🛡️ Golden Warriors</div>
-        <table class="perf-table">
-          <thead><tr><th class="pl-col">Player</th><th>4s</th><th>Wkts</th></tr></thead>
-          <tbody>
-            <tr class="cap-row"><td class="pl">👑 Tanzim</td><td class="num fours">0</td><td class="num wkts">1</td></tr>
-            <tr><td class="pl">Shuvo</td><td class="num fours">4</td><td class="num wkts">0</td></tr>
-            <tr><td class="pl">Md Nayeem</td><td class="num fours">5</td><td class="num wkts">1</td></tr>
-            <tr><td class="pl">Fahim</td><td class="num fours">2</td><td class="num wkts">0</td></tr>
-            <tr><td class="pl">Saad</td><td class="num fours">2</td><td class="num wkts">1</td></tr>
-            <tr><td class="pl">Babu</td><td class="num fours">1</td><td class="num wkts">1</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Blazing Tigers -->
-      <div class="perf-card">
-        <div class="perf-hdr" style="color:#ff6622;">🔥 Blazing Tigers</div>
-        <table class="perf-table">
-          <thead><tr><th class="pl-col">Player</th><th>4s</th><th>Wkts</th></tr></thead>
-          <tbody>
-            <tr class="cap-row"><td class="pl">👑 Mahfuz Rahman Mishu</td><td class="num fours">0</td><td class="num wkts">1</td></tr>
-            <tr><td class="pl">Latif</td><td class="num fours">3</td><td class="num wkts">0</td></tr>
-            <tr><td class="pl">Tushar</td><td class="num fours">3</td><td class="num wkts">0</td></tr>
-            <tr><td class="pl">Shiraj</td><td class="num fours">0</td><td class="num wkts">0</td></tr>
-            <tr><td class="pl">Dedar</td><td class="num fours">1</td><td class="num wkts">1</td></tr>
-            <tr><td class="pl">Khalid</td><td class="num fours">2</td><td class="num wkts">0</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Thunder Strikers -->
-      <div class="perf-card">
-        <div class="perf-hdr" style="color:#22aaff;">⚡ Thunder Strikers</div>
-        <table class="perf-table">
-          <thead><tr><th class="pl-col">Player</th><th>4s</th><th>Wkts</th></tr></thead>
-          <tbody>
-            <tr class="cap-row"><td class="pl">👑 Meraj</td><td class="num fours">1</td><td class="num wkts">0</td></tr>
-            <tr><td class="pl">Mahafuz Islam</td><td class="num fours">1</td><td class="num wkts">2</td></tr>
-            <tr><td class="pl">Shobuz</td><td class="num fours">1</td><td class="num wkts">0</td></tr>
-            <tr><td class="pl">Asif Reza</td><td class="num fours">2</td><td class="num wkts">2</td></tr>
-            <tr><td class="pl">Maruf</td><td class="num fours">1</td><td class="num wkts">1</td></tr>
-            <tr><td class="pl">Oliullah</td><td class="num fours">2</td><td class="num wkts">0</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- The Sixers -->
-      <div class="perf-card">
-        <div class="perf-hdr" style="color:#00e060;">🏏 The Sixers</div>
-        <table class="perf-table">
-          <thead><tr><th class="pl-col">Player</th><th>4s</th><th>Wkts</th></tr></thead>
-          <tbody>
-            <tr class="cap-row"><td class="pl">👑 Rafiq Rabbi</td><td class="num fours">7</td><td class="num wkts">1</td></tr>
-            <tr><td class="pl">Shohag</td><td class="num fours">2</td><td class="num wkts">0</td></tr>
-            <tr><td class="pl">Montasir</td><td class="num fours">0</td><td class="num wkts">1</td></tr>
-            <tr><td class="pl">Rouf</td><td class="num fours">2</td><td class="num wkts">0</td></tr>
-            <tr><td class="pl">Mofidul</td><td class="num fours">0</td><td class="num wkts">0</td></tr>
-            <tr><td class="pl">Minhazur Rahman</td><td class="num fours">1</td><td class="num wkts">0</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-    </div>
-
-    <!-- ══ SEMI FINALS ══ -->
-    <div class="section-label" style="padding-top:28px;">
-      <span class="badge badge-semi">Semi Final</span>
-      <span class="line"></span>
-      <span class="note">TOP 3 QUALIFY · 1ST PLACE DIRECT TO FINAL</span>
-    </div>
-
-    <div class="day-card" style="border-color:#221800;">
-      <div class="day-hdr" style="background:rgba(255,160,0,0.04);">
-        <span class="day-lbl" style="color:#ffa000;">Day 7 — Semi Final</span>
-        <span class="day-note">1 match</span>
-      </div>
-      <div class="match-row is-semi" style="padding:16px 18px;">
-        <span class="match-num-lbl" style="color:#ffa000;">SF</span>
-        <div class="team-side right">
-          <span class="t-name" style="color:#c0b090;font-size:14px;">2nd Place</span>
-          <div class="color-pip" style="background:#ffa000;opacity:.5;"></div>
-        </div>
-        <span class="vs-pill" style="border-color:rgba(255,160,0,0.3);color:#ffa000;font-size:12px;padding:4px 12px;">VS</span>
-        <div class="team-side">
-          <div class="color-pip" style="background:#ffa000;opacity:.5;"></div>
-          <span class="t-name" style="color:#c0b090;font-size:14px;">3rd Place</span>
-        </div>
-        <span class="match-badge" style="background:rgba(255,160,0,0.1);color:#ffa000;border:1px solid rgba(255,160,0,0.3);">2nd v 3rd</span>
-      </div>
-    </div>
-
-    <!-- 1st place bye note -->
-    <div style="display:flex;align-items:center;gap:10px;padding:12px 18px;margin-bottom:2px;background:rgba(240,192,64,0.03);border:1px solid rgba(240,192,64,0.12);border-radius:10px;">
-      <span style="font-size:16px;">🥇</span>
-      <span style="font-size:12px;color:#a08040;"><strong style="color:#c0a030;">1st Place</strong> — Direct entry to Grand Final (bye)</span>
-    </div>
-
-    <!-- ══ GRAND FINAL ══ -->
-    <div class="section-label" style="padding-top:24px;">
-      <span class="badge badge-final">🏆 Grand Final</span>
-      <span class="line"></span>
-      <span class="note">WINNER TAKES ALL</span>
-    </div>
-
-    <div class="day-card" style="border-color:#2a2000;box-shadow:0 0 24px rgba(240,192,64,0.07);">
-      <div class="day-hdr" style="background:rgba(240,192,64,0.04);">
-        <span class="day-lbl" style="color:#f0c040;">Day 8 — 🏆 Grand Final</span>
-        <span class="day-note" style="color:#806020;">Championship Match</span>
-      </div>
-      <div class="match-row is-final">
-        <span class="match-num-lbl" style="color:#f0c040;">GF</span>
-        <div class="team-side right">
-          <span class="t-name">1st Place</span>
-          <div class="color-pip" style="background:linear-gradient(180deg,#f0c040,#ff8800);"></div>
-        </div>
-        <span class="vs-pill">VS</span>
-        <div class="team-side">
-          <div class="color-pip" style="background:linear-gradient(180deg,#f0c040,#ff8800);"></div>
-          <span class="t-name">SF Winner</span>
-        </div>
-        <span class="match-badge" style="background:rgba(240,192,64,0.14);color:#f0c040;border:1px solid rgba(240,192,64,0.38);">FINAL</span>
-      </div>
-    </div>
-
-    <!-- Points rule strip -->
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;padding:14px 16px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;">
-      <span style="font-size:11px;color:#5050a0;letter-spacing:1px;margin-right:4px;font-family:'Oswald',sans-serif;text-transform:uppercase;">Points:</span>
-      <span style="font-size:12px;color:#80e880;">🟢 Win = 2pts</span>
-      <span style="font-size:12px;color:#808080;">·</span>
-      <span style="font-size:12px;color:#e88080;">🔴 Loss = 0pts</span>
-      <span style="font-size:12px;color:#808080;">·</span>
-      <span style="font-size:12px;color:#e8e080;">🟡 Tie = 1pt each</span>
-      <span style="font-size:12px;color:#808080;">·</span>
-      <span style="font-size:12px;color:#9080c0;">⚡ NRR breaks ties</span>
-      <span style="font-size:12px;color:#808080;">·</span>
-      <span style="font-size:12px;color:#9080c0;">🏆 Top 3 → Playoffs · 1st gets bye</span>
-    </div>
-  </div>
-
-  <!-- ══ BOTTOM STRIP ══ -->
-  <div class="bottom-strip">
-    <div class="bstat"><div class="val">12</div><div class="lbl">Group Matches</div></div>
-    <div class="battle-txt">🏏 LET THE BATTLE BEGIN 🏏<small>May the best team win!</small></div>
-    <div class="bstat"><div class="val">14</div><div class="lbl">Total Matches</div></div>
-  </div>
-
-</div>
-</body>
+  </body>
 </html>
